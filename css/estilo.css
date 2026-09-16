@@ -203,7 +203,6 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("img/backgrounds/bg-decoration-1.png");
   background-repeat: no-repeat;
   background-position: 72% center;
   background-size: auto 240%;

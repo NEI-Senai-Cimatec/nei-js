@@ -1,0 +1,146 @@
+﻿
+Caminho                                                                                                                
+-------                                                                                                                
+css\estilo.css                                                                                                         
+docs\estudos_cientificos\joao\sizing-optimization-of-a-exoskeleton-structure-utilizing-finite-element-analysis-and-m...
+docs\estudos_cientificos\mabel\em-que-consistem,-sinteticamente,-as-críticas-teóricas-e-metodológicas-à-ordotoxia-ec...
+docs\estudos_cientificos\mabel\prisioneiros-ou-emancipados-em-seu-propósito---uma-investigação-sobre-os-desafios-do-...
+docs\estudos_cientificos\mabel\produtividade-do-trabalho-na-indústria-de-transformação-no-sul-e-sudeste-brasileiro.pdf 
+docs\estudos_cientificos\mabel\taxonomias-tecnológicas-e-setoriais-da-indústria-de-transformação-brasileira.pdf        
+docs\estudos_cientificos\milton\identidades-nacionais-russas-e-geopolítica-do-cáucaso.pdf                              
+docs\estudos_cientificos\raphael\a-dinâmica-territorial-do-emprego-das-aglomerações-industriais-na-crise-ecomômica-r...
+docs\estudos_cientificos\raphael\aglomerações-industriais-relevantes-e-potenciais---novas-diâmicas-territoriais-bras...
+docs\estudos_cientificos\raphael\a-indústria-da-reconfiguração-territorial-brasileira---novas-expressões-dos-dilemas...
+docs\estudos_cientificos\raphael\banco-do-nordeste-do-brasil-70-anos-de-contribuição-para-o-desenvolvimento-regional...
+docs\estudos_cientificos\raphael\desconcentração-territorial-e-reestruturação-regressiva-da-indústria-no-brasil---pa...
+docs\estudos_cientificos\raphael\distribuição-territorial-dos-desembolsos-do-bndes-para-a-indústria-e-a-infraestrutu...
+docs\estudos_cientificos\raphael\estimativas-do-investimento-microrregional-por-meio-de-variáveis-proxies-de-crédito...
+docs\estudos_cientificos\raphael\geopolítica-e-projeção-de-poder-na-amazônia---reestruturação-da-estratégia-de-defes...
+docs\estudos_cientificos\raphael\maré-invisível-e-as-mulheres-na-pesca-artesanal---um-estudo-sobre-o-perfil-laboral-...
+docs\estudos_cientificos\raphael\novas-ruralidades-na-microrregião-central-serrana-do-espírito-santo---uma-investiga...
+docs\estudos_cientificos\raphael\o-banco-do-nordeste-e-o-desenvolvimento-do-nordeste-brasileiro----atuação-recente-e...
+docs\estudos_cientificos\raphael\o-novo-mapa-da-indústria-no-brasil---as-aglomerações-industriais-relevantes-no-perí...
+docs\estudos_cientificos\raphael\o-território-das-atividades-industriais-no-brasil---a-força-das-economias-de-aglome...
+docs\estudos_cientificos\raphael\perfil-e-dinâmica-das-desigualdades-regionais-do-brasil-em-territórios-industriais-...
+docs\estudos_cientificos\raphael\região-e-indústria-no-brasil---ainda-a-continuidade-da-desconcentração-concentrada.pdf
+docs\estudos_cientificos\raphael\transformações-recentes-da-indústria-no-sudeste----evidências-da-dinâmica-produtiva...
+docs\estudos_cientificos\raphael\vulnerabilidade-externa-estrutural---uma-análise-comparativa-do-brasil-frente-aos-b...
+docs\estudos_cientificos\yuri\o-potencial-do-nordeste-como-produtor-de-hidrogenio-verde.pdf                            
+docs\estudos_setoriais\relatório-hub-aeroespacial_final.pdf                                                            
+docs\estudos_setoriais\relatório-técnico_-economia-digital-e-criativa.pdf                                              
+docs\estudos_setoriais\relatório-técnico-implantação-curso-técnico-em-manutenção-de-aeronaves.pdf                      
+docs\white_papers\descarbonizacao-do-mercado-de-carbono.pdf                                                            
+docs\white_papers\mercado-nautico.pdf                                                                                  
+docs\white_papers\processos-de-reciclagem-de-paineis-fotovoltaicos.pdf                                                 
+img\logos\abein.png                                                                                                    
+img\logos\ibge-brazil.svg                                                                                              
+img\logos\logo-ence.svg.webp                                                                                           
+img\logos\nei.png                                                                                                      
+img\logos\senai1.png                                                                                                   
+img\others\benchmarking.png                                                                                            
+img\others\benchmarking-crop.png                                                                                       
+img\others\dashboard.png                                                                                               
+img\others\dashboard-crop.png                                                                                          
+img\others\fluxo-de-demanda-do-nei-2026.png                                                                            
+img\others\inteligência-de-tecnologia-e-inovação.png                                                                   
+img\others\inteligência-de-tecnologia-e-inovação-crop.png                                                              
+img\produtos\benchmarking\benchmarking-internacional-do-setor-aeroespacial.png                                         
+img\produtos\benchmarking\benchmarking-licenciamento-ambiental.png                                                     
+img\produtos\benchmarking\benchmarking-nacional-aeroespacial-gavião-peixoto.png                                        
+img\produtos\benchmarking\economia-digital_benchmarking-porto-digital.png                                              
+img\produtos\benchmarking\serviços-de-data-center-reforma-tributária-e-regime-alfandegário.png                         
+img\produtos\white_papers\descarbonizacao-mercado-de-carbono.png                                                       
+img\produtos\white_papers\mercado-nautico.png                                                                          
+img\produtos\white_papers\processos-de-reciclagem-de-paineis-fotovoltaicos.png                                         
+img\team\andre.jpeg                                                                                                    
+img\team\david.jpeg                                                                                                    
+img\team\felipe.jpeg                                                                                                   
+img\team\italo.png                                                                                                     
+img\team\joao.jpg                                                                                                      
+img\team\mabel.jpg                                                                                                     
+img\team\milton.jpg                                                                                                    
+img\team\raphael.jpg                                                                                                   
+img\team\yuri.jpeg                                                                                                     
+img\thumb\benchmarking\benchmarking-internacional-do-setor-aeroespacial.png                                            
+img\thumb\benchmarking\benchmarking-licenciamento-ambiental.png                                                        
+img\thumb\benchmarking\benchmarking-nacional-do-aeroespacial-gaviao-peixoto.png                                        
+img\thumb\benchmarking\economia-digital-benchmarking-do-porto-digital.png                                              
+img\thumb\benchmarking\economia-do-mar.png                                                                             
+img\thumb\benchmarking\eyewear-industry.png                                                                            
+img\thumb\benchmarking\fabricacao-de-artigos-de-metal-para-uso-domestico-e-pessoal.png                                 
+img\thumb\benchmarking\mercado-data-lake-e-dataspaces.png                                                              
+img\thumb\benchmarking\mercado-de-centro-de-testagem-de-drones.png                                                     
+img\thumb\benchmarking\mercado-de-cyberseguranca.png                                                                   
+img\thumb\benchmarking\mercado-de-data-center.png                                                                      
+img\thumb\benchmarking\mercado-de-ia-generativa-em-saude.png                                                           
+img\thumb\benchmarking\mercado-de-micropropagacao.png                                                                  
+img\thumb\benchmarking\mercado-de-moldes-e-ferramentas.png                                                             
+img\thumb\benchmarking\mercado-de-reciclagem-paineis-solares.png                                                       
+img\thumb\benchmarking\mercado-de-studio.png                                                                           
+img\thumb\benchmarking\mercado-nautico.png                                                                             
+img\thumb\benchmarking\ocp-brinquedos.png                                                                              
+img\thumb\benchmarking\servicos-de-data-center-reforma-tributaria-e-regime-alfandegario.png                            
+img\thumb\dashboards\mapa-ourolandia.png                                                                               
+img\thumb\dashboards\painel-da-industria-e-das-compras-publicas-da-bahia.png                                           
+img\thumb\estudos_cientificos\joao\sizing-optimization-of-a-exoskeleton-structure-utilizing-finite-element-analysis-...
+img\thumb\estudos_cientificos\mabel\distribuição-territorial-dos-desembolsoso-do-bndes-para-a-indústria-e-a-infraest...
+img\thumb\estudos_cientificos\mabel\em-que-consistem,-sinteticamente,-as-críticas-teóricas-e-metodológicas-à-ordotox...
+img\thumb\estudos_cientificos\mabel\prisioneiros-ou-emancipados-em-seu-propósito---uma-investigação-sobre-os-desafio...
+img\thumb\estudos_cientificos\mabel\produtividade-do-trabalho-na-indústria-de-transformação-no-sul-e-sudeste-brasile...
+img\thumb\estudos_cientificos\mabel\taxonomias-tecnológicas-e-setoriais-da-indústria-de-transformação-brasileira.jpg   
+img\thumb\estudos_cientificos\milton\identidades-nacionais-russas-e-geopolítica-do-cáucaso.jpg                         
+img\thumb\estudos_cientificos\raphael\A Dinâmica Territorial do Emprego das Aglomerações Industriais na Crise Ecomôm...
+img\thumb\estudos_cientificos\raphael\A Indústria da Reconfiguração Territorial Brasileira - novas expressões dos di...
+img\thumb\estudos_cientificos\raphael\Aglomerações Industriais Relevantes e Potenciais - novas diâmicas territoriais...
+img\thumb\estudos_cientificos\raphael\Banco do Nordeste do Brasil 70 anos de contribuição para o desenvolvimento reg...
+img\thumb\estudos_cientificos\raphael\Desconcentração Territorial e Reestruturação Regressiva da Indústria no Brasil...
+img\thumb\estudos_cientificos\raphael\Distribuição Territorial dos Desembolsos do BNDES para a Indústria e a Infraes...
+img\thumb\estudos_cientificos\raphael\Estimativas do Investimento Microrregional por meio de Variáveis Proxies de Cr...
+img\thumb\estudos_cientificos\raphael\Geopolítica e Projeção de Poder na Amazônia - reestruturação da estratégia de ...
+img\thumb\estudos_cientificos\raphael\Maré Invisível e as Mulheres na Pesca Artesanal - um estudo sobre o perfil lab...
+img\thumb\estudos_cientificos\raphael\Novas Ruralidades na Microrregião Central Serrana do Espírito Santo - uma inve...
+img\thumb\estudos_cientificos\raphael\O Banco do Nordeste e o Desenvolvimento do Nordeste Brasileiro -  atuação rece...
+img\thumb\estudos_cientificos\raphael\O Novo mapa da Indústria no Brasil - as aglomerações industriais relevantes no...
+img\thumb\estudos_cientificos\raphael\O Território das Atividades Industriais no Brasil - a força das economias de a...
+img\thumb\estudos_cientificos\raphael\Perfil e Dinâmica das Desigualdades Regionais do Brasil em Territórios Industr...
+img\thumb\estudos_cientificos\raphael\Região e indústria no Brasil - ainda a continuidade da desconcentração concent...
+img\thumb\estudos_cientificos\raphael\Transformações Recentes da Indústria no Sudeste -  evidências da dinâmica prod...
+img\thumb\estudos_cientificos\raphael\Vulnerabilidade Externa Estrutural - uma análise comparativa do Brasil frente ...
+img\thumb\estudos_cientificos\yuri\o-potencial-do-nordeste-como-produtor-de-hidrogenio-verde.png                       
+img\thumb\estudos_setoriais\parque-tecnologico-aeroespacial-da-bahia-contexto-historico-panorama-de-mercado-e-possib...
+img\thumb\estudos_setoriais\relatorio-tecnico-economia-digital-e-criativa-jan-2025.png                                 
+img\thumb\estudos_setoriais\relatorio-tecnico-economia-digital-e-criativa-out-2025.png                                 
+img\thumb\estudos_setoriais\relatorio-tecnico-tecnico-em-manutencao-de-aeronaves.png                                   
+img\thumb\estudos_tecnicos\benchmarking\benchmarking-internacional-do-setor-aeroespacial.png                           
+img\thumb\estudos_tecnicos\benchmarking\benchmarking-licenciamento-ambiental.png                                       
+img\thumb\estudos_tecnicos\benchmarking\benchmarking-nacional-do-aeroespacial-gaviao-peixoto.png                       
+img\thumb\estudos_tecnicos\benchmarking\economia-digital-benchmarking-do-porto-digital.png                             
+img\thumb\estudos_tecnicos\benchmarking\economia-do-mar.png                                                            
+img\thumb\estudos_tecnicos\benchmarking\eyewear-industry.png                                                           
+img\thumb\estudos_tecnicos\benchmarking\fabricacao-de-artigos-de-metal-para-uso-domestico-e-pessoal.png                
+img\thumb\estudos_tecnicos\benchmarking\mercado-data-lake-e-dataspaces.png                                             
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-centro-de-testagem-de-drones.png                                    
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-cyberseguranca.png                                                  
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-data-center.png                                                     
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-ia-generativa-em-saude.png                                          
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-micropropagacao.png                                                 
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-moldes-e-ferramentas.png                                            
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-reciclagem-paineis-solares.png                                      
+img\thumb\estudos_tecnicos\benchmarking\mercado-de-studio.png                                                          
+img\thumb\estudos_tecnicos\benchmarking\mercado-nautico.png                                                            
+img\thumb\estudos_tecnicos\benchmarking\ocp-brinquedos.png                                                             
+img\thumb\estudos_tecnicos\benchmarking\servicos-de-data-center-reforma-tributaria-e-regime-alfandegario.png           
+img\thumb\estudos_tecnicos\dashboards\mapa-ourolandia.png                                                              
+img\thumb\estudos_tecnicos\dashboards\painel-da-industria-e-das-compras-publicas-da-bahia.png                          
+index.html                                                                                                             
+js\auth.js                                                                                                             
+js\idioma.js                                                                                                           
+js\publicacoes.js                                                                                                      
+js\traducao.js                                                                                                         
+js\trama.js                                                                                                            
+js\ui-produtos.js                                                                                                      
+LICENSE                                                                                                                
+manifesto.txt                                                                                                          
+README.md                                                                                                              
+
+

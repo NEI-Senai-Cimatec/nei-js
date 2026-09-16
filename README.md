@@ -1,7 +1,7 @@
 # Site do NEI — Núcleo de Economia Industrial
 
 Site institucional publicado via GitHub Pages em
-`https://nei-senai-cimatec.github.io/nei/`.
+`https://nei-senai-cimatec.github.io/nei-js/`.
 
 HTML, CSS e JavaScript puros. Não há build, não há dependências para instalar.
 Editar, commitar e dar push publica o site.
