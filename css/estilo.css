@@ -684,12 +684,20 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 34px
+  gap: 100px
 }
 
 .logos img {
   height: 44px;
-  width: auto
+  width: auto;
+}
+
+.logo-ence {
+  height: 100px !important;
+}
+
+.logo-abein {
+  height: 200px !important;
 }
 
 .contato .caixa {
