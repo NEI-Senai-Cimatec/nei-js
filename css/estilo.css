@@ -47,14 +47,6 @@ body {
   -webkit-font-smoothing: antialiased
 }
 
-#trama {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
 
 body.travado {
   overflow: hidden
@@ -226,29 +218,87 @@ a {
   pointer-events: none;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
-  background-position: 72% center;
-  background-size: auto 240%;
-  opacity: .35;
-  filter: brightness(1.6);
-  pointer-events: none;
-}
-
-@media (max-width: 700px) {
-  .hero::after {
-    background-position: 80% center;
-    background-size: auto 150%;
-    opacity: .3;
-  }
-}
-
 .hero .wrap {
   position: relative;
   z-index: 2;
+}
+
+.hero-onda {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-ondas-svg-wrap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-ondas-svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+.ondas-movimento > use {
+  animation: mover-onda 22s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.onda-c1 {
+  fill: rgba(0, 163, 224, 0.28);
+  animation-delay: -2s !important;
+  animation-duration: 7s !important;
+}
+
+.onda-c2 {
+  fill: rgba(0, 87, 168, 0.42);
+  animation-delay: -3s !important;
+  animation-duration: 10s !important;
+}
+
+.onda-c3 {
+  fill: rgba(0, 43, 92, 0.60);
+  animation-delay: -4s !important;
+  animation-duration: 13s !important;
+}
+
+.onda-c4 {
+  fill: rgba(0, 210, 255, 0.22);
+  animation-delay: -5s !important;
+  animation-duration: 18s !important;
+}
+
+@keyframes mover-onda {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-ondas-svg-wrap,
+  .hero-ondas-svg {
+    height: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ondas-movimento > use {
+    animation: none;
+  }
 }
 
 .eyebrow {

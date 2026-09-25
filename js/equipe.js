@@ -12,7 +12,7 @@
         "André Oliveira é superintendente executivo de Planejamento e Novos Negócios do SENAI CIMATEC, atuando nas áreas de energia, inovação, sustentabilidade, gestão de negócios e educação. Doutor em Modelagem Computacional para Tecnologia Industrial pelo SENAI CIMATEC, mestre em Energia pela Universidade Federal do Ceará (UFC), possui MBA Executivo pela Fundação Dom Cabral e é graduado em Engenharia Mecânica pela Universidade Federal da Bahia (UFBA).",
         "Desde 2016, lidera o desenvolvimento de parcerias estratégicas, o planejamento e a implantação de novos campi, além da criação do Instituto de Economia Industrial do SENAI CIMATEC. Também supervisiona projetos de Pesquisa, Desenvolvimento e Inovação (P&D&I) e de Educação Profissional, contribuindo para a expansão e o fortalecimento do ecossistema de inovação da instituição."
       ],
-      lattes: null
+      lattes: "http://lattes.cnpq.br/2751189771637743"
     },
     mabel: {
       nome: "Mabel Mota",

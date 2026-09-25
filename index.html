@@ -14,14 +14,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/estilo.css?v=2026.1">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
 <body>
-  <canvas id="trama" aria-hidden="true"></canvas>
   <header class="topo">
     <div class="wrap topo-conteudo">
 
@@ -73,6 +72,20 @@
   </header>
 
   <section id="home" class="hero">
+    <canvas id="onda-hero" class="hero-onda" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;display:block;"></canvas>
+    <div class="hero-ondas-svg-wrap" aria-hidden="true" style="position:absolute;left:0;bottom:0;width:100%;height:50px;overflow:hidden;pointer-events:none;z-index:1;">
+      <svg class="hero-ondas-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" style="position:relative;display:block;width:100%;height:50px;">
+        <defs>
+          <path id="onda-curva" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="ondas-movimento">
+          <use href="#onda-curva" x="48" y="0" class="onda-camada onda-c1" />
+          <use href="#onda-curva" x="48" y="3" class="onda-camada onda-c2" />
+          <use href="#onda-curva" x="48" y="5" class="onda-camada onda-c3" />
+          <use href="#onda-curva" x="48" y="7" class="onda-camada onda-c4" />
+        </g>
+      </svg>
+    </div>
     <div class="wrap">
       <p class="eyebrow">Núcleo de Economia Industrial | SENAI CIMATEC</p>
       <h1>Transformamos dados em decisões estratégicas para o ecossistema SENAI CIMATEC e a indústria da Bahia.</h1>
@@ -314,10 +327,10 @@
     <div class="wrap">
       <p class="rotulo">Parceiros</p>
       <div class="logos reveal">
-        <img src="https://nei-senai-cimatec.github.io/nei-js/img/logos/ibge-brazil.svg" alt="IBGE">
-        <img src="https://nei-senai-cimatec.github.io/nei-js/img/logos/logo-ence.svg.webp" alt="ENCE" class="logo-ence">
         <img src="https://nei-senai-cimatec.github.io/nei-js/img/logos/abein.png"
           alt="ABEIN, Associação Brasileira de Economia Industrial e Inovação" class="logo-abein">
+        <img src="https://nei-senai-cimatec.github.io/nei-js/img/logos/ibge-brazil.svg" alt="IBGE">
+        <img src="https://nei-senai-cimatec.github.io/nei-js/img/logos/logo-ence.svg.webp" alt="ENCE" class="logo-ence">
       </div>
     </div>
   </section>
@@ -343,6 +356,15 @@
         Unidade de inteligência competitiva do <span translate="no">SENAI CIMATEC</span>.
       </p>
       <ul class="redes">
+        <li>
+          <a href="https://senaicimatec.com.br/" target="_blank" rel="noopener" aria-label="Site oficial do SENAI CIMATEC">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9.5"></circle>
+              <line x1="2.5" y1="12" x2="21.5" y2="12"></line>
+              <path d="M12 2.5a14.8 14.8 0 0 1 3.8 9.5 14.8 14.8 0 0 1-3.8 9.5 14.8 14.8 0 0 1-3.8-9.5 14.8 14.8 0 0 1 3.8-9.5z"></path>
+            </svg>
+          </a>
+        </li>
         <li>
           <a href="https://www.facebook.com/cimatecoficial/?locale=pt_BR" target="_blank" rel="noopener"
             aria-label="SENAI CIMATEC no Facebook">
@@ -589,7 +611,7 @@
 
   <script src="js/traducao.js"></script>
 
-  <script src="js/trama.js"></script>
+  <script src="js/trama.js?v=2026.1"></script>
 
   <script src="js/publicacoes.js"></script>
 </body>

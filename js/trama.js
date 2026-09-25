@@ -1,64 +1,163 @@
 // trama.js
-// NEI - Nucleo de Economia Industrial | SENAI CIMATEC
-// Animacao do canvas de fundo do hero.
-// Extraido de index.html (bloco original: linhas 527-587).
+// NEI - Núcleo de Economia Industrial | SENAI CIMATEC
+// Dinâmica de ondas fluidas e harmônicas na capa institucional (seção hero).
 
 (function () {
-  var cv = document.getElementById('trama');
-  if (!cv) return;
-  var ctx = cv.getContext('2d');
+  'use strict';
 
-  var N = 70;          // numero de curvas
-  var COR = '0,87,168';  // --azul-institucional em RGB
-  var ALFA = 0.23;        // opacidade base
-  var VEL = 1.12;        // velocidade da onda
-  var ONDA = 0.1;       // amplitude do movimento lateral
-  var ESPAL = 4;         // defasagem ao longo do feixe
-  var CINT = 0.55;        // profundidade da cintilacao
+  function init() {
+    var cv = document.getElementById('onda-hero') || document.getElementById('trama');
+    if (!cv) return;
+    var ctx = cv.getContext('2d');
+    if (!ctx) return;
 
-  var W = 0, H = 0, dpr = 1;
-  var parado = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hero = cv.closest ? cv.closest('.hero') : cv.parentElement;
+    var animId = null;
+    var visivel = true;
+    var parado = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function medir() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = W * dpr; cv.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (parado) quadro(0);
-  }
+    var W = 0;
+    var H = 0;
+    var dpr = 1;
 
-  function quadro(ms) {
-    var t = ms / 1000;
-    ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 1.1;
-    var A = ONDA * W;
-
-    for (var i = 0; i < N; i++) {
-      var u = i / (N - 1);
-      var uu = Math.pow(u, 1.3);
-      var f = u * ESPAL;
-
-      var d0 = A * 0.55 * Math.sin(t * VEL * 1.00 + f);
-      var d1 = A * 0.85 * Math.sin(t * VEL * 0.73 + f * 1.4 + 1.1);
-      var dc = A * 1.70 * Math.sin(t * VEL * 0.61 + f * 0.8 + 2.3);
-      var cy = H * (0.46 + 0.10 * Math.sin(t * VEL * 0.47 + f * 0.5));
-
-      var brilho = 0.5 + 0.5 * Math.sin(t * VEL * 0.9 + f * 1.9);
-      var a = ALFA * (1 - CINT + CINT * brilho) * (0.5 + 0.5 * (1 - uu));
-
-      ctx.beginPath();
-      ctx.moveTo(W * (0.50 + 0.66 * uu) + d0, -25);
-      ctx.quadraticCurveTo(
-        W * (0.58 + 0.82 * uu) + dc, cy,
-        W * (0.26 + 0.74 * uu) + d1, H + 25
-      );
-      ctx.strokeStyle = 'rgba(' + COR + ',' + a.toFixed(3) + ')';
-      ctx.stroke();
+    // 12 partículas de dados brilhantes
+    var particulas = [];
+    var NUM_PARTICULAS = 12;
+    for (var p = 0; p < NUM_PARTICULAS; p++) {
+      particulas.push({
+        progresso: p / NUM_PARTICULAS,
+        velocidade: 0.0006 + (p % 4) * 0.0003,
+        feixeIdx: p % 3,
+        tamanho: 2.4 + (p % 3) * 1.2,
+        alfaBase: 0.5 + (p % 3) * 0.25
+      });
     }
-    if (!parado) requestAnimationFrame(quadro);
+
+    function medir() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var rect = (hero && hero.getBoundingClientRect()) || {};
+      W = rect.width || (hero && hero.clientWidth) || cv.clientWidth || window.innerWidth || 1200;
+      H = rect.height || (hero && hero.clientHeight) || cv.clientHeight || 480;
+      cv.width = Math.round(W * dpr);
+      cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      if (parado) {
+        desenhar(0);
+      }
+    }
+
+    // Curvas senoidais do feixe de dados
+    function calcularLinhaFeixe(x, t, idx) {
+      if (idx === 0) {
+        return (
+          H * 0.38 +
+          Math.sin(x * 0.0032 + t * 0.8) * 30 +
+          Math.cos(x * 0.0068 - t * 0.5) * 16
+        );
+      } else if (idx === 1) {
+        return (
+          H * 0.50 +
+          Math.sin(x * 0.0040 - t * 0.65 + 1.8) * 26 +
+          Math.sin(x * 0.0085 + t * 0.45) * 14
+        );
+      }
+      return (
+        H * 0.62 +
+        Math.cos(x * 0.0035 + t * 0.55 + 3.2) * 28 +
+        Math.sin(x * 0.0072 - t * 0.7) * 15
+      );
+    }
+
+    function desenhar(ms) {
+      var t = ms / 1000;
+      ctx.clearRect(0, 0, W, H);
+
+      // 1. Feixes de ondas luminosas (linhas de sinal) com alto contraste
+      var passoX = 6;
+      for (var l = 0; l < 3; l++) {
+        ctx.save();
+        var gradLinha = ctx.createLinearGradient(0, 0, W, 0);
+        gradLinha.addColorStop(0, 'rgba(0, 163, 224, 0.08)');
+        gradLinha.addColorStop(0.3, 'rgba(0, 163, 224, 0.35)');
+        gradLinha.addColorStop(0.65, 'rgba(0, 210, 255, 0.75)');
+        gradLinha.addColorStop(1, 'rgba(180, 240, 255, 0.90)');
+
+        ctx.beginPath();
+        for (var x = 0; x <= W + passoX; x += passoX) {
+          var y = calcularLinhaFeixe(x, t, l);
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = gradLinha;
+        ctx.lineWidth = l === 1 ? 2.2 : 1.6;
+        ctx.shadowColor = 'rgba(0, 210, 255, 0.8)';
+        ctx.shadowBlur = l === 1 ? 12 : 6;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 2. Partículas pulsantes ao longo dos feixes de ondas
+      if (!parado) {
+        for (var i = 0; i < particulas.length; i++) {
+          var pt = particulas[i];
+          pt.progresso += pt.velocidade;
+          if (pt.progresso > 1) pt.progresso -= 1;
+
+          var px = pt.progresso * W;
+          var py = calcularLinhaFeixe(px, t, pt.feixeIdx);
+
+          var alfa = pt.alfaBase * Math.min(1, pt.progresso * 1.8);
+          if (alfa > 0.05) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(px, py, pt.tamanho, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(210, 248, 255, ' + alfa.toFixed(2) + ')';
+            ctx.shadowColor = 'rgba(0, 210, 255, 0.9)';
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+      }
+
+      if (!parado && visivel) {
+        animId = requestAnimationFrame(desenhar);
+      }
+    }
+
+    medir();
+    window.addEventListener('resize', medir, { passive: true });
+
+    // Desenhar o primeiro quadro imediatamente
+    desenhar(performance.now());
+    if (!parado) {
+      animId = requestAnimationFrame(desenhar);
+    }
+
+    // Otimização: pausar quando a seção hero sair da janela
+    if ('IntersectionObserver' in window && hero) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            visivel = entry.isIntersecting;
+            if (visivel && !parado) {
+              if (!animId) animId = requestAnimationFrame(desenhar);
+            } else if (!visivel && animId) {
+              cancelAnimationFrame(animId);
+              animId = null;
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(hero);
+    }
   }
 
-  medir();
-  addEventListener('resize', medir, { passive: true });
-  if (!parado) requestAnimationFrame(quadro);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

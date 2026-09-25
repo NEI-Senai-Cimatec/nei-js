@@ -2,13 +2,13 @@ name: Manter Supabase Ativo
 
 on:
   schedule:
-    # Executa a cada 3 dias às 06:00 UTC (03:00 horário de Brasília)
-    - cron: '0 6 */3 * *'
-  workflow_dispatch: # Permite disparar manualmente pela aba Actions do GitHub
+    # Executa TODOS OS DIAS às 06:00 UTC (03:00 horário de Brasília)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permite disparar manualmente caso deseje testar
 
 jobs:
   ping:
-    name: Ping no Banco de Dados Supabase
+    name: Ping Diário no Banco de Dados Supabase
     runs-on: ubuntu-latest
     steps:
       - name: Realizar consulta no Supabase
