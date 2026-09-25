@@ -1,0 +1,30 @@
+name: Manter Supabase Ativo
+
+on:
+  schedule:
+    # Executa a cada 3 dias às 06:00 UTC (03:00 horário de Brasília)
+    - cron: '0 6 */3 * *'
+  workflow_dispatch: # Permite disparar manualmente pela aba Actions do GitHub
+
+jobs:
+  ping:
+    name: Ping no Banco de Dados Supabase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Realizar consulta no Supabase
+        run: |
+          STATUS=$(curl -s -o response.json -w "%{http_code}" -X GET \
+            "https://rtesmxnuowguozgnjlrd.supabase.co/rest/v1/publicacoes_publicas?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0ZXNteG51b3dndW96Z25qbHJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNTY0MzMsImV4cCI6MjEwMzkzMjQzM30.JCHOOBu4AhYSn2-q7h9UUwHx9XePfoCv8LM7ZjlGR6c' }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0ZXNteG51b3dndW96Z25qbHJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNTY0MzMsImV4cCI6MjEwMzkzMjQzM30.JCHOOBu4AhYSn2-q7h9UUwHx9XePfoCv8LM7ZjlGR6c' }}")
+
+          echo "HTTP Status retornado: $STATUS"
+          cat response.json
+          echo ""
+
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]; then
+            echo "Banco de dados consultado com sucesso! Inatividade resetada."
+          else
+            echo "Falha ao consultar o Supabase."
+            exit 1
+          fi
