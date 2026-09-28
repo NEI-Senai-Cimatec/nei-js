@@ -235,6 +235,102 @@ async function abrirDocumentoPastaRestrita(
   }
 }
 
+async function carregarCapaOportunidadesCampi() {
+  const containerCapa = document.getElementById("capa-oportunidades-campi");
+  let imgCapa = document.getElementById("img-capa-oportunidades-campi");
+  if (!containerCapa && !imgCapa) return;
+
+  function aplicarUrlImagem(url) {
+    if (!imgCapa && containerCapa) {
+      containerCapa.innerHTML = "";
+      imgCapa = document.createElement("img");
+      imgCapa.id = "img-capa-oportunidades-campi";
+      imgCapa.alt = "Radar da Inovação - Oportunidades para os Campi";
+      imgCapa.loading = "lazy";
+      containerCapa.appendChild(imgCapa);
+    }
+    if (imgCapa) {
+      imgCapa.src = url;
+    }
+  }
+
+  const buckets = ["oportunidades-campi", "oportunidades_campi", "pasta-restrita"];
+  const arquivos = [
+    "oportunidades-campi.png",
+    "capas/oportunidades-campi.png",
+    "capas/oportunidades.png",
+    "oportunidades.png"
+  ];
+
+  for (const bucket of buckets) {
+    // 1. Tenta nomes diretos
+    for (const caminho of arquivos) {
+      try {
+        const { data, error } = await supabaseClient.storage
+          .from(bucket)
+          .createSignedUrl(caminho, 3600);
+
+        if (!error && data && data.signedUrl) {
+          aplicarUrlImagem(data.signedUrl);
+          return;
+        }
+      } catch (e) {
+        // tenta proximo
+      }
+    }
+
+    // 2. Se não encontrou pelo nome fixo, lista os arquivos do bucket
+    try {
+      const { data: lista, error: erroLista } = await supabaseClient.storage
+        .from(bucket)
+        .list("", { limit: 20 });
+
+      if (!erroLista && Array.isArray(lista) && lista.length > 0) {
+        const arqImg = lista.find(
+          (item) => item.name && /\.(png|jpe?g|webp|svg)$/i.test(item.name)
+        );
+
+        if (arqImg) {
+          const { data, error } = await supabaseClient.storage
+            .from(bucket)
+            .createSignedUrl(arqImg.name, 3600);
+
+          if (!error && data && data.signedUrl) {
+            imgCapa.src = data.signedUrl;
+            return;
+          }
+        }
+
+        // Se houver subpasta como capas/
+        const subpasta = lista.find((item) => item.name === "capas" || item.id === null);
+        if (subpasta) {
+          const { data: listaSub } = await supabaseClient.storage
+            .from(bucket)
+            .list("capas", { limit: 20 });
+
+          if (Array.isArray(listaSub)) {
+            const arqSubImg = listaSub.find(
+              (item) => item.name && /\.(png|jpe?g|webp|svg)$/i.test(item.name)
+            );
+            if (arqSubImg) {
+              const { data, error } = await supabaseClient.storage
+                .from(bucket)
+                .createSignedUrl(`capas/${arqSubImg.name}`, 3600);
+
+              if (!error && data && data.signedUrl) {
+                imgCapa.src = data.signedUrl;
+                return;
+              }
+            }
+          }
+        }
+      }
+    } catch (e) {
+      // continua para o próximo bucket
+    }
+  }
+}
+
 async function carregarArquivosPastaRestrita() {
   if (
     !usuarioTemAcessoPasta ||
@@ -699,6 +795,10 @@ async function atualizarInterfaceAutenticacao(session) {
         ? "false"
         : "true"
     );
+
+    if (usuarioTemAcessoCampi) {
+      await carregarCapaOportunidadesCampi();
+    }
   }
 
   if (usuarioTemAcessoPasta) {
