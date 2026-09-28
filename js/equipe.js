@@ -43,9 +43,10 @@
       nome: "Raphael Oliveira",
       cargo: "Pesquisador em Economia Aplicada",
       papel: "Pesquisador Bolsista",
-      foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/raphael.jpg",
+      foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/raphael.png",
       bio: [
-        "Profissional da área de Economia, com ênfase em Política Pública, Desenvolvimento Regional e Economia Industrial. Doutorando em Economia pela Universidade Federal da Bahia, Mestre em Economia Aplicada pela Universidade Federal de São Carlos (2017) e graduado em Ciências Econômicas pela Universidade Federal Fluminense (2014)."
+        "Profissional da área de Economia, com ênfase em Política Pública, Desenvolvimento Regional e Economia Industrial. Doutorando em Economia pela Universidade Federal da Bahia, Mestre em Economia Aplicada pela Universidade Federal de São Carlos (2017) e graduado em Ciências Econômicas pela Universidade Federal Fluminense (2014).",
+        "Experiência como pesquisador no Programa de Pesquisa para o Desenvolvimento Nacional (PNPD) da Diretoria de Estudos e Políticas Regionais, Urbanas e Ambientais (Dirur) do Instituto de Pesquisa Econômica Aplicada (Ipea). Atual Especialista do Observatório da Federação das Indústrias do Estado do Espírito Santo (FINDES), Consultor do Ministério da Integração e Desenvolvimento Regional (MIDR) e Professor Orientador de Cursos de Pós-Graduação MBA da Escola Superior de Agricultura Luiz de Queiroz da Universidade de São Paulo (USP-Esalq)."
       ],
       lattes: "http://lattes.cnpq.br/1607374084886589",
       contato: "raphael.silva@fbter.org.br"

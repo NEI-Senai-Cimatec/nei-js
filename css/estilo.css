@@ -1118,6 +1118,10 @@ h2 {
   word-break: break-all;
 }
 
+.oportunidades-campi h2 {
+  max-width: 38ch;
+}
+
 .modal-equipe-direita {
   padding: 40px 48px 40px 36px;
   overflow-y: auto;
