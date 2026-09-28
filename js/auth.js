@@ -44,10 +44,12 @@ const atalhoCadastro = document.getElementById("atalhoCadastro");
 const modalContatoEstudo = document.getElementById("modal-contato-estudo");
 const secaoPastaRestrita = document.getElementById("pasta-restrita");
 const containerArquivosPastaRestrita = document.getElementById("arquivos-pasta-restrita");
+const secaoOportunidadesCampi = document.getElementById("oportunidades-campi");
 
 let sessaoAtual = null;
 let usuarioTemAcesso = false;
 let usuarioTemAcessoPasta = false;
+let usuarioTemAcessoCampi = false;
 let arquivosPastaCarregados = false;
 
 function abrirContatoEstudo() {
@@ -118,6 +120,30 @@ async function verificarAutorizacaoPasta(session) {
   if (error) {
     console.error(
       "Erro ao verificar autorização da pasta:",
+      error
+    );
+
+    return false;
+  }
+
+  return Boolean(data && data.ativo === true);
+}
+
+async function verificarAutorizacaoCampi(session) {
+  if (!session || !session.user) {
+    return false;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("usuarios_oportunidades_campi")
+    .select("ativo")
+    .eq("user_id", session.user.id)
+    .eq("ativo", true)
+    .maybeSingle();
+
+  if (error) {
+    console.error(
+      "Erro ao verificar autorização de oportunidades dos campi:",
       error
     );
 
@@ -600,6 +626,9 @@ async function atualizarInterfaceAutenticacao(session) {
   usuarioTemAcessoPasta =
     await verificarAutorizacaoPasta(session);
 
+  usuarioTemAcessoCampi =
+    await verificarAutorizacaoCampi(session);
+
   if (usuarioAutenticado) {
     btnLoginNavbar.textContent =
       obterTextosAtuais().sair;
@@ -653,6 +682,20 @@ async function atualizarInterfaceAutenticacao(session) {
     secaoPastaRestrita.setAttribute(
       "aria-hidden",
       usuarioTemAcessoPasta
+        ? "false"
+        : "true"
+    );
+  }
+
+  if (secaoOportunidadesCampi) {
+    secaoOportunidadesCampi.classList.toggle(
+      "oculto",
+      !usuarioTemAcessoCampi
+    );
+
+    secaoOportunidadesCampi.setAttribute(
+      "aria-hidden",
+      usuarioTemAcessoCampi
         ? "false"
         : "true"
     );
