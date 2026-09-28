@@ -23,7 +23,7 @@ function obterLinksProtegidos() {
 }
 
 function obterLinksSitesExternos() {
-  return document.querySelectorAll("#conteudoProdutos a.link-site-externo");
+  return document.querySelectorAll("a.link-site-externo");
 }
 
 function obterLinksPdfProtegidos() {
@@ -966,7 +966,7 @@ function vincularLinksProdutos() {
         evento.preventDefault();
         evento.stopPropagation();
 
-        if (!usuarioTemAcesso) {
+        if (!usuarioTemAcesso && !usuarioTemAcessoCampi) {
           abrirContatoEstudo();
           return;
         }

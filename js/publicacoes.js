@@ -98,6 +98,8 @@ async function carregarEstudosTecnicos() {
   data.forEach(function (estudo) {
     const arquivo = estudo.caminho_arquivo?.toLowerCase();
 
+    const ehSiteExterno = arquivo && !arquivo.endsWith(".pdf");
+
     const card = document.createElement("article");
     card.className = "card";
 
@@ -113,19 +115,11 @@ async function carregarEstudosTecnicos() {
             <h3>${esc(estudo.titulo)}</h3>
             <p>${esc(estudo.resumo)}</p>
             <p class="produto">Produto: ${esc(estudo.tipo)}</p>
-            <a class="link link-protegido ${arquivo === "compras" || arquivo === "anuario"
-        ? "link-site-externo"
-        : "link-pdf-protegido"
-      }"
-href="#"
-${arquivo === "compras"
-        ? 'data-site="compras"'
-        : arquivo === "anuario"
-          ? 'data-site="anuario"'
-          : `data-arquivo="${esc(estudo.caminho_arquivo)}"`
-      }>
-Entre em contato
-</a>
+            <a class="link link-protegido ${ehSiteExterno ? "link-site-externo" : "link-pdf-protegido"}"
+               href="#"
+               ${ehSiteExterno ? `data-site="${esc(estudo.caminho_arquivo)}"` : `data-arquivo="${esc(estudo.caminho_arquivo)}"`}>
+               Entre em contato
+            </a>
         </div>
     `;
 
