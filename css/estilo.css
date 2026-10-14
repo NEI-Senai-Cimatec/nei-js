@@ -1786,6 +1786,7 @@ footer .rodape-legal {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin-top: 10px;
 }
 
@@ -1797,6 +1798,7 @@ footer .rodape-legal {
   gap: 7px;
   background: transparent;
   border: 0;
+  margin: 0 auto;
   padding: 6px 12px;
   color: var(--azul-institucional);
   font-family: var(--display);
