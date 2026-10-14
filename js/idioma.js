@@ -16,7 +16,11 @@
       criarConta: "Criar conta",
       criandoConta: "Criando conta...",
       solicitarEstudo: "Solicitar estudo",
-      entreEmContato: "Entre em contato"
+      entreEmContato: "Entre em contato",
+      enviarLink: "Enviar link de recuperação",
+      enviando: "Enviando...",
+      salvarNovaSenha: "Salvar nova senha",
+      salvando: "Salvando..."
     },
 
     en: {
@@ -30,7 +34,11 @@
       criarConta: "Create account",
       criandoConta: "Creating account...",
       solicitarEstudo: "Request a study",
-      entreEmContato: "Contact us"
+      entreEmContato: "Contact us",
+      enviarLink: "Send reset link",
+      enviando: "Sending...",
+      salvarNovaSenha: "Save new password",
+      salvando: "Saving..."
     },
 
     es: {
@@ -44,7 +52,11 @@
       criarConta: "Crear cuenta",
       criandoConta: "Creando cuenta...",
       solicitarEstudo: "Solicitar un estudio",
-      entreEmContato: "Contáctenos"
+      entreEmContato: "Contáctenos",
+      enviarLink: "Enviar enlace de recuperación",
+      enviando: "Enviando...",
+      salvarNovaSenha: "Guardar nueva contraseña",
+      salvando: "Guardando..."
     }
   };
 

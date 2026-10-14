@@ -1779,7 +1779,58 @@ footer .rodape-legal {
   outline-offset: 3px;
 }
 
-#formCadastro .login-alternar {
+.login-rotulo-com-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+}
+
+.login-rotulo-com-link label {
+  margin-bottom: 0;
+}
+
+.login-link-esqueci {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--azul-institucional);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 87, 168, .35);
+  transition:
+    color .18s ease,
+    border-color .18s ease;
+}
+
+.login-link-esqueci:hover {
+  color: var(--azul-profundo);
+  border-bottom-color: var(--azul-profundo);
+}
+
+.login-link-esqueci:active {
+  color: var(--azul-claro);
+}
+
+.login-link-esqueci:focus-visible {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 2px;
+}
+
+.login-ajuda {
+  display: block;
+  margin-top: 5px;
+  color: var(--cinza);
+  font-size: 12px;
+}
+
+#formCadastro .login-alternar,
+#formRecuperarSenha .login-alternar {
   margin-top: 18px;
 }
 
@@ -1789,7 +1840,9 @@ footer .rodape-legal {
   }
 }
 
-#btnCadastrar {
+#btnCadastrar,
+#btnRecuperarSenha,
+#btnSalvarNovaSenha {
   margin-top: 0;
 }
 

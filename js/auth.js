@@ -41,6 +41,17 @@ const confirmarSenhaCadastro = document.getElementById("confirmarSenhaCadastro")
 const btnCadastrar = document.getElementById("btnCadastrar");
 const mensagemCadastro = document.getElementById("mensagemCadastro");
 const atalhoCadastro = document.getElementById("atalhoCadastro");
+const abrirRecuperarSenha = document.getElementById("abrirRecuperarSenha");
+const voltarLoginRecuperacao = document.getElementById("voltarLoginRecuperacao");
+const formRecuperarSenha = document.getElementById("formRecuperarSenha");
+const recuperarEmail = document.getElementById("recuperarEmail");
+const btnRecuperarSenha = document.getElementById("btnRecuperarSenha");
+const mensagemRecuperacao = document.getElementById("mensagemRecuperacao");
+const formNovaSenha = document.getElementById("formNovaSenha");
+const novaSenha = document.getElementById("novaSenha");
+const confirmarNovaSenha = document.getElementById("confirmarNovaSenha");
+const btnSalvarNovaSenha = document.getElementById("btnSalvarNovaSenha");
+const mensagemNovaSenha = document.getElementById("mensagemNovaSenha");
 const modalContatoEstudo = document.getElementById("modal-contato-estudo");
 const secaoPastaRestrita = document.getElementById("pasta-restrita");
 const containerArquivosPastaRestrita = document.getElementById("arquivos-pasta-restrita");
@@ -626,6 +637,8 @@ async function carregarArquivosPastaRestrita() {
 function exibirCadastro() {
   formLogin.hidden = true;
   atalhoCadastro.hidden = true;
+  if (formRecuperarSenha) formRecuperarSenha.hidden = true;
+  if (formNovaSenha) formNovaSenha.hidden = true;
   formCadastro.hidden = false;
 
   tituloLogin.textContent = "Criar conta";
@@ -634,6 +647,14 @@ function exibirCadastro() {
     "Cadastre-se para acessar os estudos técnicos do NEI.";
 
   mensagemLogin.textContent = "";
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
   mensagemCadastro.textContent = "";
   mensagemCadastro.className = "login-mensagem";
 
@@ -644,6 +665,8 @@ function exibirCadastro() {
 
 function exibirLogin() {
   formCadastro.hidden = true;
+  if (formRecuperarSenha) formRecuperarSenha.hidden = true;
+  if (formNovaSenha) formNovaSenha.hidden = true;
   formLogin.hidden = false;
   atalhoCadastro.hidden = false;
 
@@ -654,11 +677,80 @@ function exibirLogin() {
     "os conteúdos restritos.";
 
   mensagemCadastro.textContent = "";
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
   mensagemLogin.textContent = "";
   mensagemLogin.className = "login-mensagem";
 
   setTimeout(function () {
     loginEmail.focus();
+  }, 50);
+}
+
+function exibirRecuperacao() {
+  formLogin.hidden = true;
+  atalhoCadastro.hidden = true;
+  formCadastro.hidden = true;
+  if (formNovaSenha) formNovaSenha.hidden = true;
+  if (formRecuperarSenha) formRecuperarSenha.hidden = false;
+
+  tituloLogin.textContent = "Recuperar senha";
+
+  introducaoLogin.textContent =
+    "Digite seu e-mail cadastrado para enviarmos as instruções de recuperação de senha.";
+
+  mensagemLogin.textContent = "";
+  mensagemCadastro.textContent = "";
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+
+  if (recuperarEmail) {
+    if (!recuperarEmail.value && loginEmail && loginEmail.value) {
+      recuperarEmail.value = loginEmail.value.trim();
+    }
+    setTimeout(function () {
+      recuperarEmail.focus();
+    }, 50);
+  }
+}
+
+function exibirNovaSenha() {
+  formLogin.hidden = true;
+  atalhoCadastro.hidden = true;
+  formCadastro.hidden = true;
+  if (formRecuperarSenha) formRecuperarSenha.hidden = true;
+  if (formNovaSenha) formNovaSenha.hidden = false;
+
+  tituloLogin.textContent = "Redefinir senha";
+
+  introducaoLogin.textContent =
+    "Digite sua nova senha para atualizar seu acesso aos estudos do NEI.";
+
+  mensagemLogin.textContent = "";
+  mensagemCadastro.textContent = "";
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
+
+  setTimeout(function () {
+    if (novaSenha) novaSenha.focus();
   }, 50);
 }
 
@@ -682,20 +774,52 @@ function fecharModalLogin() {
 
   formLogin.reset();
   formCadastro.reset();
+  if (formRecuperarSenha) formRecuperarSenha.reset();
+  if (formNovaSenha) formNovaSenha.reset();
 
   mensagemLogin.textContent = "";
   mensagemCadastro.textContent = "";
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
 
   mensagemLogin.className = "login-mensagem";
   mensagemCadastro.className = "login-mensagem";
 
   formCadastro.hidden = true;
+  if (formRecuperarSenha) formRecuperarSenha.hidden = true;
+  if (formNovaSenha) formNovaSenha.hidden = true;
   formLogin.hidden = false;
   atalhoCadastro.hidden = false;
 
   tituloLogin.textContent = "Entrar";
 
   introducaoLogin.textContent = "Entre com seu e-mail e senha para acessar " + "os conteúdos restritos.";
+}
+
+function traduzirErroRecuperacao(mensagem) {
+  if (!mensagem) {
+    return "Não foi possível enviar o e-mail de recuperação. Tente novamente.";
+  }
+  if (
+    mensagem.includes("rate limit") ||
+    mensagem.includes("For security purposes") ||
+    mensagem.includes("over_email_send_rate_limit")
+  ) {
+    return "Para sua segurança, aguarde alguns instantes antes de solicitar novamente.";
+  }
+  if (mensagem.includes("User not found")) {
+    return "Nenhuma conta cadastrada encontrada com este e-mail.";
+  }
+  if (mensagem.includes("valid email") || mensagem.includes("invalid")) {
+    return "Informe um endereço de e-mail válido.";
+  }
+  return "Não foi possível enviar o link de recuperação. Tente novamente.";
 }
 
 function traduzirErroLogin(mensagem) {
@@ -985,6 +1109,159 @@ async function realizarLogin(evento) {
   }
 }
 
+async function solicitarRecuperacaoSenha(evento) {
+  evento.preventDefault();
+
+  const email = recuperarEmail ? recuperarEmail.value.trim() : "";
+
+  if (mensagemRecuperacao) {
+    mensagemRecuperacao.textContent = "";
+    mensagemRecuperacao.className = "login-mensagem";
+  }
+
+  if (!email) {
+    if (mensagemRecuperacao) {
+      mensagemRecuperacao.textContent = "Informe seu e-mail cadastrado.";
+      mensagemRecuperacao.classList.add("erro");
+    }
+    if (recuperarEmail) recuperarEmail.focus();
+    return;
+  }
+
+  const textos = obterTextosAtuais();
+  if (btnRecuperarSenha) {
+    btnRecuperarSenha.disabled = true;
+    btnRecuperarSenha.textContent = textos.enviando || "Enviando...";
+  }
+
+  try {
+    const urlRetorno = window.location.origin + window.location.pathname;
+    const { data, error } = await supabaseClient.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo: urlRetorno
+      }
+    );
+
+    if (error) {
+      console.error("Erro na recuperação de senha:", error);
+      if (mensagemRecuperacao) {
+        mensagemRecuperacao.textContent = traduzirErroRecuperacao(error.message);
+        mensagemRecuperacao.classList.add("erro");
+      }
+      return;
+    }
+
+    if (mensagemRecuperacao) {
+      mensagemRecuperacao.textContent =
+        "E-mail de recuperação enviado! Verifique sua caixa de entrada e spam para redefinir sua senha.";
+      mensagemRecuperacao.classList.add("sucesso");
+    }
+    if (formRecuperarSenha) formRecuperarSenha.reset();
+  } catch (erro) {
+    console.error("Erro de conexão na recuperação:", erro);
+    if (mensagemRecuperacao) {
+      mensagemRecuperacao.textContent =
+        "Não foi possível conectar ao serviço de autenticação. Tente novamente.";
+      mensagemRecuperacao.classList.add("erro");
+    }
+  } finally {
+    if (btnRecuperarSenha) {
+      btnRecuperarSenha.disabled = false;
+      btnRecuperarSenha.textContent = textos.enviarLink || "Enviar link de recuperação";
+    }
+  }
+}
+
+async function salvarNovaSenha(evento) {
+  evento.preventDefault();
+
+  const senha = novaSenha ? novaSenha.value : "";
+  const confirmar = confirmarNovaSenha ? confirmarNovaSenha.value : "";
+
+  if (mensagemNovaSenha) {
+    mensagemNovaSenha.textContent = "";
+    mensagemNovaSenha.className = "login-mensagem";
+  }
+
+  if (!senha || !confirmar) {
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent = "Preencha todos os campos.";
+      mensagemNovaSenha.classList.add("erro");
+    }
+    return;
+  }
+
+  if (senha.length < 8) {
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent = "A senha deve ter pelo menos 8 caracteres.";
+      mensagemNovaSenha.classList.add("erro");
+    }
+    return;
+  }
+
+  if (senha !== confirmar) {
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent = "As senhas não coincidem.";
+      mensagemNovaSenha.classList.add("erro");
+    }
+    return;
+  }
+
+  const textos = obterTextosAtuais();
+  if (btnSalvarNovaSenha) {
+    btnSalvarNovaSenha.disabled = true;
+    btnSalvarNovaSenha.textContent = textos.salvando || "Salvando...";
+  }
+
+  try {
+    const { data, error } = await supabaseClient.auth.updateUser({
+      password: senha
+    });
+
+    if (error) {
+      console.error("Erro ao atualizar senha:", error);
+      if (mensagemNovaSenha) {
+        mensagemNovaSenha.textContent =
+          "Não foi possível atualizar a senha. Tente novamente.";
+        mensagemNovaSenha.classList.add("erro");
+      }
+      return;
+    }
+
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent = "Senha atualizada com sucesso! Você já está autenticado.";
+      mensagemNovaSenha.classList.add("sucesso");
+    }
+    if (formNovaSenha) formNovaSenha.reset();
+
+    if (window.location.hash && window.location.hash.includes("type=recovery")) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
+    if (data && data.user) {
+      const { data: sessionData } = await supabaseClient.auth.getSession();
+      await atualizarInterfaceAutenticacao(sessionData ? sessionData.session : null);
+    }
+
+    setTimeout(function () {
+      fecharModalLogin();
+    }, 1800);
+  } catch (erro) {
+    console.error("Erro de conexão ao salvar nova senha:", erro);
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent =
+        "Erro de conexão ao salvar nova senha. Tente novamente.";
+      mensagemNovaSenha.classList.add("erro");
+    }
+  } finally {
+    if (btnSalvarNovaSenha) {
+      btnSalvarNovaSenha.disabled = false;
+      btnSalvarNovaSenha.textContent = textos.salvarNovaSenha || "Salvar nova senha";
+    }
+  }
+}
+
 async function verificarSessao() {
   const { data, error } =
     await supabaseClient.auth.getSession();
@@ -1191,6 +1468,39 @@ voltarLogin.addEventListener(
   exibirLogin
 );
 
+if (abrirRecuperarSenha) {
+  abrirRecuperarSenha.addEventListener(
+    "click",
+    exibirRecuperacao
+  );
+}
+
+if (voltarLoginRecuperacao) {
+  voltarLoginRecuperacao.addEventListener(
+    "click",
+    function () {
+      if (recuperarEmail && recuperarEmail.value.trim() && loginEmail && !loginEmail.value.trim()) {
+        loginEmail.value = recuperarEmail.value.trim();
+      }
+      exibirLogin();
+    }
+  );
+}
+
+if (formRecuperarSenha) {
+  formRecuperarSenha.addEventListener(
+    "submit",
+    solicitarRecuperacaoSenha
+  );
+}
+
+if (formNovaSenha) {
+  formNovaSenha.addEventListener(
+    "submit",
+    salvarNovaSenha
+  );
+}
+
 formCadastro.addEventListener(
   "submit",
   realizarCadastro
@@ -1215,6 +1525,10 @@ supabaseClient.auth.onAuthStateChange(function (
   evento,
   session
 ) {
+  if (evento === "PASSWORD_RECOVERY") {
+    abrirModalLogin();
+    exibirNovaSenha();
+  }
   setTimeout(function () {
     atualizarInterfaceAutenticacao(session);
   }, 0);
@@ -1224,5 +1538,11 @@ window.vincularLinksProdutos = vincularLinksProdutos;
 window.reaplicarEstadoAutenticacao = function () {
   return atualizarInterfaceAutenticacao(sessaoAtual);
 };
+
+// Abre modal de redefinição se o usuário acessou por link de recuperação
+if (window.location.hash && window.location.hash.includes("type=recovery")) {
+  abrirModalLogin();
+  exibirNovaSenha();
+}
 
 verificarSessao();

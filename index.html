@@ -574,7 +574,12 @@
         </div>
 
         <div class="login-campo">
-          <label for="loginSenha">Senha</label>
+          <div class="login-rotulo-com-link">
+            <label for="loginSenha">Senha</label>
+            <button id="abrirRecuperarSenha" class="login-link-esqueci" type="button">
+              Esqueci a senha
+            </button>
+          </div>
 
           <input id="loginSenha" name="senha" type="password" autocomplete="current-password"
             placeholder="Digite sua senha" required>
@@ -592,6 +597,57 @@
           Cadastre-se
         </button>
       </p>
+
+      <!-- Formulário de recuperação de senha -->
+      <form id="formRecuperarSenha" hidden onsubmit="return false">
+        <div class="login-campo">
+          <label for="recuperarEmail">E-mail</label>
+
+          <input id="recuperarEmail" name="email" type="email" autocomplete="email"
+            placeholder="seu.email@exemplo.com" required>
+        </div>
+
+        <button id="btnRecuperarSenha" class="btn login-enviar" type="submit">
+          Enviar link de recuperação
+        </button>
+
+        <p id="mensagemRecuperacao" class="login-mensagem" role="status" aria-live="polite"></p>
+
+        <p class="login-alternar">
+          Lembrou a senha?
+          <button id="voltarLoginRecuperacao" class="login-link" type="button">
+            Entre aqui
+          </button>
+        </p>
+      </form>
+
+      <!-- Formulário de redefinição de nova senha (ao clicar no link enviado por e-mail) -->
+      <form id="formNovaSenha" hidden onsubmit="return false">
+        <div class="login-campo">
+          <label for="novaSenha">Nova senha</label>
+
+          <input id="novaSenha" name="novaSenha" type="password" autocomplete="new-password"
+            placeholder="Digite a nova senha" minlength="8" required>
+
+          <small class="login-ajuda">
+            Use pelo menos 8 caracteres.
+          </small>
+        </div>
+
+        <div class="login-campo">
+          <label for="confirmarNovaSenha">Confirme a nova senha</label>
+
+          <input id="confirmarNovaSenha" name="confirmarNovaSenha" type="password" autocomplete="new-password"
+            placeholder="Confirme a nova senha" minlength="8" required>
+        </div>
+
+        <button id="btnSalvarNovaSenha" class="btn login-enviar" type="submit">
+          Salvar nova senha
+        </button>
+
+        <p id="mensagemNovaSenha" class="login-mensagem" role="status" aria-live="polite"></p>
+      </form>
+
       <form id="formCadastro" hidden>
         <div class="login-campo">
           <label for="nomeCadastro">Nome</label>
