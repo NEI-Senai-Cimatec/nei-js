@@ -1871,6 +1871,111 @@ footer .rodape-legal {
   margin-top: 0;
 }
 
+/* BANNER DE AVISO DE RECUPERAÇÃO DE SENHA */
+.banner-recuperacao {
+  position: relative;
+  z-index: 1000;
+  background: #FFF4E5;
+  border-bottom: 2px solid var(--ambar);
+  color: #7A4100;
+  padding: 10px 0;
+  font-family: var(--display);
+  font-size: 14.5px;
+}
+
+.banner-recuperacao[hidden] {
+  display: none !important;
+}
+
+.banner-recuperacao-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.banner-recuperacao-texto {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.banner-recuperacao-texto .login-icone-chave {
+  stroke: var(--ambar);
+  flex-shrink: 0;
+}
+
+.banner-recuperacao-acoes {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-banner-acao {
+  appearance: none;
+  background: var(--azul-institucional);
+  color: var(--branco);
+  border: 0;
+  padding: 6px 14px;
+  font-family: var(--display);
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: background-color .18s ease;
+}
+
+.btn-banner-acao:hover {
+  background: var(--azul-profundo);
+}
+
+.btn-banner-cancelar {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #7A4100;
+  font-family: var(--display);
+  font-size: 13.5px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.btn-banner-cancelar:hover {
+  color: #000;
+}
+
+/* Shake suave para alertar que a modal não fecha clicando fora */
+@keyframes modalShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.login-caixa.shake {
+  animation: modalShake 0.35s ease-in-out;
+}
+
+/* Destaque no botão do navbar durante redefinição de senha */
+.menu-login.menu-login-recuperacao {
+  background: #C4380D;
+  color: var(--branco);
+  border-color: #C4380D;
+  font-weight: 600;
+  animation: pulsoAtencao 2s infinite ease-in-out;
+}
+
+@keyframes pulsoAtencao {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(196, 56, 13, .4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(196, 56, 13, 0);
+  }
+}
+
 .topo-acoes {
   grid-column: 3;
   justify-self: end;

@@ -20,7 +20,8 @@
       enviarLink: "Enviar link de recuperação",
       enviando: "Enviando...",
       salvarNovaSenha: "Salvar nova senha",
-      salvando: "Salvando..."
+      salvando: "Salvando...",
+      redefinirSenha: "Redefinir senha"
     },
 
     en: {
@@ -38,7 +39,8 @@
       enviarLink: "Send reset link",
       enviando: "Sending...",
       salvarNovaSenha: "Save new password",
-      salvando: "Saving..."
+      salvando: "Saving...",
+      redefinirSenha: "Reset password"
     },
 
     es: {
@@ -56,7 +58,8 @@
       enviarLink: "Enviar enlace de recuperación",
       enviando: "Enviando...",
       salvarNovaSenha: "Guardar nueva contraseña",
-      salvando: "Guardando..."
+      salvando: "Guardando...",
+      redefinirSenha: "Restablecer contraseña"
     }
   };
 

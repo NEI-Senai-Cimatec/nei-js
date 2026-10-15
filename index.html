@@ -14,13 +14,30 @@
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css?v=2026.2">
+  <link rel="stylesheet" href="css/estilo.css?v=2026.3">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
 <body>
+  <div id="bannerRecuperacaoSenha" class="banner-recuperacao" hidden>
+    <div class="wrap banner-recuperacao-conteudo">
+      <div class="banner-recuperacao-texto">
+        <svg class="login-icone-chave" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="7.5" cy="15.5" r="5.5"></circle>
+          <path d="m21 2-9.6 9.6"></path>
+          <path d="m15.5 7.5 3 3"></path>
+        </svg>
+        <span>Você está redefinindo sua senha. Defina sua nova senha para concluir.</span>
+      </div>
+      <div class="banner-recuperacao-acoes">
+        <button id="btnBannerAbrirRedefinicao" class="btn-banner-acao" type="button">Definir nova senha</button>
+        <button id="btnBannerCancelar" class="btn-banner-cancelar" type="button">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <header class="topo">
     <div class="wrap topo-conteudo">
 
@@ -652,6 +669,13 @@
         </button>
 
         <p id="mensagemNovaSenha" class="login-mensagem" role="status" aria-live="polite"></p>
+
+        <p class="login-alternar">
+          Deseja cancelar?
+          <button id="cancelarNovaSenha" class="login-link" type="button">
+            Voltar ao login
+          </button>
+        </p>
       </form>
 
       <form id="formCadastro" hidden>

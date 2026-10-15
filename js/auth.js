@@ -52,6 +52,10 @@ const novaSenha = document.getElementById("novaSenha");
 const confirmarNovaSenha = document.getElementById("confirmarNovaSenha");
 const btnSalvarNovaSenha = document.getElementById("btnSalvarNovaSenha");
 const mensagemNovaSenha = document.getElementById("mensagemNovaSenha");
+const cancelarNovaSenha = document.getElementById("cancelarNovaSenha");
+const bannerRecuperacaoSenha = document.getElementById("bannerRecuperacaoSenha");
+const btnBannerAbrirRedefinicao = document.getElementById("btnBannerAbrirRedefinicao");
+const btnBannerCancelar = document.getElementById("btnBannerCancelar");
 const modalContatoEstudo = document.getElementById("modal-contato-estudo");
 const secaoPastaRestrita = document.getElementById("pasta-restrita");
 const containerArquivosPastaRestrita = document.getElementById("arquivos-pasta-restrita");
@@ -62,6 +66,31 @@ let usuarioTemAcesso = false;
 let usuarioTemAcessoPasta = false;
 let usuarioTemAcessoCampi = false;
 let arquivosPastaCarregados = false;
+let emModoRedefinicaoSenha = sessionStorage.getItem("nei_em_redefinicao_senha") === "1";
+
+function exibirBannerRecuperacao() {
+  if (bannerRecuperacaoSenha && emModoRedefinicaoSenha) {
+    bannerRecuperacaoSenha.hidden = false;
+  }
+}
+
+function removerBannerRecuperacao() {
+  if (bannerRecuperacaoSenha) {
+    bannerRecuperacaoSenha.hidden = true;
+  }
+}
+
+function destacarCaixaLogin() {
+  const caixa = modalLogin ? modalLogin.querySelector(".login-caixa") : null;
+  if (caixa) {
+    caixa.classList.remove("shake");
+    void caixa.offsetWidth;
+    caixa.classList.add("shake");
+  }
+  if (novaSenha && formNovaSenha && !formNovaSenha.hidden) {
+    novaSenha.focus();
+  }
+}
 
 function abrirContatoEstudo() {
   if (!modalContatoEstudo) {
@@ -762,9 +791,15 @@ function abrirModalLogin() {
   modalLogin.setAttribute("aria-hidden", "false");
   document.body.classList.add("travado");
 
-  setTimeout(function () {
-    loginEmail.focus();
-  }, 100);
+  removerBannerRecuperacao();
+
+  if (emModoRedefinicaoSenha) {
+    exibirNovaSenha();
+  } else {
+    setTimeout(function () {
+      loginEmail.focus();
+    }, 100);
+  }
 }
 
 function fecharModalLogin() {
@@ -772,34 +807,55 @@ function fecharModalLogin() {
   modalLogin.setAttribute("aria-hidden", "true");
   document.body.classList.remove("travado");
 
-  formLogin.reset();
-  formCadastro.reset();
-  if (formRecuperarSenha) formRecuperarSenha.reset();
-  if (formNovaSenha) formNovaSenha.reset();
+  if (!emModoRedefinicaoSenha) {
+    formLogin.reset();
+    formCadastro.reset();
+    if (formRecuperarSenha) formRecuperarSenha.reset();
+    if (formNovaSenha) formNovaSenha.reset();
 
-  mensagemLogin.textContent = "";
-  mensagemCadastro.textContent = "";
-  if (mensagemRecuperacao) {
-    mensagemRecuperacao.textContent = "";
-    mensagemRecuperacao.className = "login-mensagem";
+    mensagemLogin.textContent = "";
+    mensagemCadastro.textContent = "";
+    if (mensagemRecuperacao) {
+      mensagemRecuperacao.textContent = "";
+      mensagemRecuperacao.className = "login-mensagem";
+    }
+    if (mensagemNovaSenha) {
+      mensagemNovaSenha.textContent = "";
+      mensagemNovaSenha.className = "login-mensagem";
+    }
+
+    mensagemLogin.className = "login-mensagem";
+    mensagemCadastro.className = "login-mensagem";
+
+    formCadastro.hidden = true;
+    if (formRecuperarSenha) formRecuperarSenha.hidden = true;
+    if (formNovaSenha) formNovaSenha.hidden = true;
+    formLogin.hidden = false;
+    atalhoCadastro.hidden = false;
+
+    tituloLogin.textContent = "Entrar";
+    introducaoLogin.textContent = "Entre com seu e-mail e senha para acessar os conteúdos restritos.";
+  } else {
+    exibirBannerRecuperacao();
   }
-  if (mensagemNovaSenha) {
-    mensagemNovaSenha.textContent = "";
-    mensagemNovaSenha.className = "login-mensagem";
+}
+
+async function cancelarRedefinicaoSenha() {
+  sessionStorage.removeItem("nei_em_redefinicao_senha");
+  emModoRedefinicaoSenha = false;
+  removerBannerRecuperacao();
+
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState(null, "", window.location.pathname);
   }
 
-  mensagemLogin.className = "login-mensagem";
-  mensagemCadastro.className = "login-mensagem";
+  try {
+    await supabaseClient.auth.signOut();
+  } catch (_) {}
 
-  formCadastro.hidden = true;
-  if (formRecuperarSenha) formRecuperarSenha.hidden = true;
-  if (formNovaSenha) formNovaSenha.hidden = true;
-  formLogin.hidden = false;
-  atalhoCadastro.hidden = false;
-
-  tituloLogin.textContent = "Entrar";
-
-  introducaoLogin.textContent = "Entre com seu e-mail e senha para acessar " + "os conteúdos restritos.";
+  sessaoAtual = null;
+  fecharModalLogin();
+  await atualizarInterfaceAutenticacao(null);
 }
 
 function traduzirErroRecuperacao(mensagem) {
@@ -849,7 +905,16 @@ async function atualizarInterfaceAutenticacao(session) {
   usuarioTemAcessoCampi =
     await verificarAutorizacaoCampi(session);
 
-  if (usuarioAutenticado) {
+  if (emModoRedefinicaoSenha) {
+    btnLoginNavbar.textContent =
+      obterTextosAtuais().redefinirSenha || "Redefinir senha";
+    btnLoginNavbar.classList.add("menu-login-recuperacao");
+    btnLoginNavbar.setAttribute(
+      "title",
+      "Clique para concluir a redefinição de sua senha"
+    );
+  } else if (usuarioAutenticado) {
+    btnLoginNavbar.classList.remove("menu-login-recuperacao");
     btnLoginNavbar.textContent =
       obterTextosAtuais().sair;
 
@@ -859,6 +924,7 @@ async function atualizarInterfaceAutenticacao(session) {
       (session.user.email || "conta ativa")
     );
   } else {
+    btnLoginNavbar.classList.remove("menu-login-recuperacao");
     btnLoginNavbar.textContent =
       obterTextosAtuais().entrar;
 
@@ -1229,13 +1295,17 @@ async function salvarNovaSenha(evento) {
       return;
     }
 
+    sessionStorage.removeItem("nei_em_redefinicao_senha");
+    emModoRedefinicaoSenha = false;
+    removerBannerRecuperacao();
+
     if (mensagemNovaSenha) {
       mensagemNovaSenha.textContent = "Senha atualizada com sucesso! Você já está autenticado.";
       mensagemNovaSenha.classList.add("sucesso");
     }
     if (formNovaSenha) formNovaSenha.reset();
 
-    if (window.location.hash && window.location.hash.includes("type=recovery")) {
+    if (window.location.hash && (window.location.hash.includes("type=recovery") || window.location.hash.includes("access_token"))) {
       history.replaceState(null, "", window.location.pathname + window.location.search);
     }
 
@@ -1268,14 +1338,33 @@ async function verificarSessao() {
 
   if (error) {
     console.error("Erro ao verificar sessão:", error);
+    sessionStorage.removeItem("nei_em_redefinicao_senha");
+    emModoRedefinicaoSenha = false;
+    removerBannerRecuperacao();
     await atualizarInterfaceAutenticacao(null);
     return;
   }
 
+  // Se estiver marcado como redefinição mas a sessão não existir mais, limpa o estado
+  if (emModoRedefinicaoSenha && (!data.session || !data.session.user)) {
+    sessionStorage.removeItem("nei_em_redefinicao_senha");
+    emModoRedefinicaoSenha = false;
+    removerBannerRecuperacao();
+  }
+
   await atualizarInterfaceAutenticacao(data.session);
+
+  if (emModoRedefinicaoSenha && data.session) {
+    abrirModalLogin();
+    exibirNovaSenha();
+  }
 }
 
 async function sair() {
+  sessionStorage.removeItem("nei_em_redefinicao_senha");
+  emModoRedefinicaoSenha = false;
+  removerBannerRecuperacao();
+
   btnLoginNavbar.disabled = true;
   btnLoginNavbar.textContent = obterTextosAtuais().saindo;
 
@@ -1302,6 +1391,12 @@ async function sair() {
 }
 
 async function acionarLoginNavbar() {
+  if (emModoRedefinicaoSenha) {
+    abrirModalLogin();
+    exibirNovaSenha();
+    return;
+  }
+
   if (sessaoAtual && sessaoAtual.user) {
     await sair();
   } else {
@@ -1501,6 +1596,30 @@ if (formNovaSenha) {
   );
 }
 
+if (cancelarNovaSenha) {
+  cancelarNovaSenha.addEventListener(
+    "click",
+    cancelarRedefinicaoSenha
+  );
+}
+
+if (btnBannerAbrirRedefinicao) {
+  btnBannerAbrirRedefinicao.addEventListener(
+    "click",
+    function () {
+      abrirModalLogin();
+      exibirNovaSenha();
+    }
+  );
+}
+
+if (btnBannerCancelar) {
+  btnBannerCancelar.addEventListener(
+    "click",
+    cancelarRedefinicaoSenha
+  );
+}
+
 formCadastro.addEventListener(
   "submit",
   realizarCadastro
@@ -1508,6 +1627,10 @@ formCadastro.addEventListener(
 
 modalLogin.addEventListener("click", function (evento) {
   if (evento.target === modalLogin) {
+    if (emModoRedefinicaoSenha) {
+      destacarCaixaLogin();
+      return;
+    }
     fecharModalLogin();
   }
 });
@@ -1517,6 +1640,10 @@ document.addEventListener("keydown", function (evento) {
     evento.key === "Escape" &&
     modalLogin.classList.contains("aberto")
   ) {
+    if (emModoRedefinicaoSenha) {
+      destacarCaixaLogin();
+      return;
+    }
     fecharModalLogin();
   }
 });
@@ -1526,6 +1653,8 @@ supabaseClient.auth.onAuthStateChange(function (
   session
 ) {
   if (evento === "PASSWORD_RECOVERY") {
+    sessionStorage.setItem("nei_em_redefinicao_senha", "1");
+    emModoRedefinicaoSenha = true;
     abrirModalLogin();
     exibirNovaSenha();
   }
@@ -1539,10 +1668,95 @@ window.reaplicarEstadoAutenticacao = function () {
   return atualizarInterfaceAutenticacao(sessaoAtual);
 };
 
-// Abre modal de redefinição se o usuário acessou por link de recuperação
-if (window.location.hash && window.location.hash.includes("type=recovery")) {
-  abrirModalLogin();
-  exibirNovaSenha();
+function extrairParametrosUrl() {
+  const params = new URLSearchParams(window.location.search || "");
+  if (window.location.hash) {
+    const hashLimpa = window.location.hash.replace(/^#/, "");
+    const hashParams = new URLSearchParams(hashLimpa);
+    hashParams.forEach(function (val, key) {
+      if (!params.has(key)) params.set(key, val);
+    });
+  }
+  return params;
 }
 
+function verificarParametrosErroUrl() {
+  const params = extrairParametrosUrl();
+  const erro = params.get("error");
+  const errorCode = params.get("error_code");
+  const errorDescription = params.get("error_description");
+
+  if (erro || errorCode || errorDescription) {
+    const isExpirado =
+      errorCode === "otp_expired" ||
+      errorCode === "token_expired" ||
+      (errorDescription && (
+        errorDescription.toLowerCase().includes("expired") ||
+        errorDescription.toLowerCase().includes("invalid") ||
+        errorDescription.toLowerCase().includes("already")
+      ));
+
+    // Remove os parâmetros de erro da barra de endereço
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
+    // Se ainda houver sessão de recuperação nesta aba, permite redefinir diretamente
+    if (emModoRedefinicaoSenha && sessaoAtual && sessaoAtual.user) {
+      abrirModalLogin();
+      exibirNovaSenha();
+      return true;
+    }
+
+    // Caso contrário, abre o modal na aba de recuperação com mensagem explicativa
+    abrirModalLogin();
+    exibirRecuperacao();
+
+    if (mensagemRecuperacao) {
+      if (isExpirado) {
+        mensagemRecuperacao.textContent =
+          "Este link de recuperação já foi utilizado ou expirou. Por segurança, links de e-mail funcionam apenas uma vez. Solicite um novo link abaixo.";
+      } else {
+        mensagemRecuperacao.textContent =
+          "Não foi possível validar o link de recuperação. Por favor, solicite um novo link abaixo.";
+      }
+      mensagemRecuperacao.className = "login-mensagem erro";
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+function verificarFluxoRecuperacao() {
+  const hash = window.location.hash || "";
+  const search = window.location.search || "";
+
+  // 1. Link com token de recuperação ativo no hash ou search
+  if (hash.includes("type=recovery") || search.includes("type=recovery")) {
+    sessionStorage.setItem("nei_em_redefinicao_senha", "1");
+    emModoRedefinicaoSenha = true;
+    abrirModalLogin();
+    exibirNovaSenha();
+    return true;
+  }
+
+  // 2. Link já utilizado ou expirado vindo do Supabase
+  if (verificarParametrosErroUrl()) {
+    return true;
+  }
+
+  // 3. Usuário já estava em processo de redefinição nesta aba
+  if (sessionStorage.getItem("nei_em_redefinicao_senha") === "1") {
+    emModoRedefinicaoSenha = true;
+    abrirModalLogin();
+    exibirNovaSenha();
+    return true;
+  }
+
+  return false;
+}
+
+verificarFluxoRecuperacao();
 verificarSessao();
