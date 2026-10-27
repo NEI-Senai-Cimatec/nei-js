@@ -1635,7 +1635,30 @@ modalLogin.addEventListener("click", function (evento) {
   }
 });
 
+modalLogin.addEventListener("keydown", function (evento) {
+  if (evento.key === "Enter" || evento.keyCode === 13) {
+    if (formLogin && !formLogin.hidden) {
+      const target = evento.target;
+      if (
+        target &&
+        ((target.tagName === "BUTTON" && target !== btnEntrar) ||
+          target.tagName === "A" ||
+          target.tagName === "TEXTAREA")
+      ) {
+        return;
+      }
+
+      if (btnEntrar && !btnEntrar.disabled) {
+        evento.preventDefault();
+        btnEntrar.click();
+      }
+    }
+  }
+});
+
 document.addEventListener("keydown", function (evento) {
+  if (evento.defaultPrevented) return;
+
   if (
     evento.key === "Escape" &&
     modalLogin.classList.contains("aberto")
@@ -1645,6 +1668,26 @@ document.addEventListener("keydown", function (evento) {
       return;
     }
     fecharModalLogin();
+  } else if (
+    (evento.key === "Enter" || evento.keyCode === 13) &&
+    modalLogin.classList.contains("aberto")
+  ) {
+    if (formLogin && !formLogin.hidden) {
+      const target = evento.target;
+      if (
+        target &&
+        ((target.tagName === "BUTTON" && target !== btnEntrar) ||
+          target.tagName === "A" ||
+          target.tagName === "TEXTAREA")
+      ) {
+        return;
+      }
+
+      if (btnEntrar && !btnEntrar.disabled) {
+        evento.preventDefault();
+        btnEntrar.click();
+      }
+    }
   }
 });
 
