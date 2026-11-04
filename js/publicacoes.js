@@ -103,9 +103,8 @@ async function carregarEstudosTecnicos() {
     const card = document.createElement("article");
     card.className = "card";
 
-    console.log(estudo.tipo);
     card.innerHTML = `
-        <div class="capa">
+        <div class="capa doc">
             <img src="${esc(estudo.caminho_capa)}"
                  alt="${esc(estudo.titulo)}"
                  loading="lazy">
