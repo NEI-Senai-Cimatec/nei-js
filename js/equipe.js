@@ -21,23 +21,11 @@
       papel: "Coordenação",
       foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/mabel.jpg",
       bio: [
-        "Doutora e graduada em Economia pela Universidade Federal da Bahia (UFBA, 2014; 2022) e Mestra em Economia Aplicada pela Universidade Federal de São Carlos (UFSCar, 2017).",
-        "Atua nas áreas de Economia Industrial, Inovação e Políticas Públicas, com experiência em órgãos do Governo da Bahia, incluindo a Superintendência de Estudos Econômicos e Sociais da Bahia (SEI), a Secretaria de Desenvolvimento Urbano (SEDUR) e a Secretaria do Trabalho, Emprego, Renda e Esporte (SETRE). Atualmente, é Coordenadora do Núcleo de Economia Industrial do SENAI CIMATEC e Bolsista Doutor do Instituto de Pesquisa Econômica Aplicada (IPEA)."
+        "Doutora e graduada em Economia pela Universidade Federal da Bahia (UFBA, 2022; 2014) e Mestra em Economia Aplicada pela Universidade Federal de São Carlos (UFSCar, 2017).",
+        "Atua nas áreas de Economia Industrial, Inovação e Políticas Públicas, com experiência em estudos econômicos, análise setorial e formulação e monitoramento de políticas públicas. Atualmente, coordena o Núcleo de Economia Industrial do SENAI CIMATEC e é Bolsista Doutora do Instituto de Pesquisa Econômica Aplicada (IPEA)."
       ],
       lattes: "http://lattes.cnpq.br/9328556139281194",
       contato: "mabel.mota@fieb.org.br"
-    },
-    yuri: {
-      nome: "Yuri Dantas",
-      cargo: "Economista e Analista de Dados",
-      papel: "Analista de Dados",
-      foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/yuri.jpeg",
-      bio: [
-        "Mestre e graduado em Ciências Econômicas pela Universidade Federal da Bahia (2022; 2018). Atua na área de Economia, com ênfase em Economia Industrial e Política Industrial, Políticas Públicas, Desenvolvimento Econômico e Economia Regional e Transição Energética.",
-        "Possui experiência na construção, tratamento e análise de bases de dados e indicadores econômicos e sociais aplicados à estrutura produtiva e ao planejamento regional, com uso de Python. Atuou no acompanhamento de projetos sociais como Analista de Projetos do Estado da Bahia, no Fundo Estadual de Combate e Erradicação da Pobreza (FUNCEP), com foco em execução física-orçamentária e indicadores de pobreza e geração de renda. Também atuou em projetos de política industrial e desenvolvimento produtivo no Estado da Bahia financiados pelo Programa das Nações Unidas para o Desenvolvimento (PNUD). Atualmente é Economista do Núcleo de Economia Industrial do SENAI CIMATEC."
-      ],
-      lattes: "http://lattes.cnpq.br/0210327430133340",
-      contato: "yuri.dantas@fieb.org.br"
     },
     raphael: {
       nome: "Raphael Oliveira",
@@ -45,11 +33,23 @@
       papel: "Pesquisador Bolsista",
       foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/raphael.png",
       bio: [
-        "Profissional da área de Economia, com ênfase em Política Pública, Desenvolvimento Regional e Economia Industrial. Doutorando em Economia pela Universidade Federal da Bahia, Mestre em Economia Aplicada pela Universidade Federal de São Carlos (2017) e graduado em Ciências Econômicas pela Universidade Federal Fluminense (2014).",
-        "Experiência como pesquisador no Programa de Pesquisa para o Desenvolvimento Nacional (PNPD) da Diretoria de Estudos e Políticas Regionais, Urbanas e Ambientais (Dirur) do Instituto de Pesquisa Econômica Aplicada (Ipea). Atual Especialista do Observatório da Federação das Indústrias do Estado do Espírito Santo (FINDES), Consultor do Ministério da Integração e Desenvolvimento Regional (MIDR) e Professor Orientador de Cursos de Pós-Graduação MBA da Escola Superior de Agricultura Luiz de Queiroz da Universidade de São Paulo (USP-Esalq)."
+        "Doutorando em Economia pela Universidade Federal da Bahia (UFBA), Mestre em Economia Aplicada pela Universidade Federal de São Carlos (UFSCar, 2017) e graduado em Ciências Econômicas pela Universidade Federal Fluminense (UFF, 2014).",
+        "Atua nas áreas de Economia Industrial, Políticas Públicas e Desenvolvimento Regional, com experiência em pesquisa aplicada no Instituto de Pesquisa Econômica Aplicada (IPEA), no Ministério da Integração e do Desenvolvimento Regional (MIDR) e em atividades de ensino na Universidade de São Paulo (USP/ESALQ)."
       ],
       lattes: "http://lattes.cnpq.br/1607374084886589",
       contato: "raphael.silva@fbter.org.br"
+    },
+    yuri: {
+      nome: "Yuri Dantas",
+      cargo: "Economista e Analista de Dados",
+      papel: "Analista de Dados",
+      foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/yuri.jpeg",
+      bio: [
+        "Mestre e graduado em Ciências Econômicas pela Universidade Federal da Bahia (UFBA, 2022; 2018).",
+        "Atua nas áreas de Economia Industrial, Política Industrial, Desenvolvimento Econômico e Economia Regional, com ênfase em análise de dados e construção de indicadores econômicos e sociais. Possui experiência em projetos de desenvolvimento produtivo e políticas públicas, incluindo iniciativas financiadas pelo Programa das Nações Unidas para o Desenvolvimento (PNUD)."
+      ],
+      lattes: "http://lattes.cnpq.br/0210327430133340",
+      contato: "yuri.dantas@fieb.org.br"
     },
     felipe: {
       nome: "Felipe Figueiroa",
