@@ -21,8 +21,9 @@
       papel: "Coordenação",
       foto: "https://nei-senai-cimatec.github.io/nei-js/img/team/mabel.jpg",
       bio: [
-        "Doutora e graduada em Economia pela Universidade Federal da Bahia (UFBA, 2022; 2014) e Mestra em Economia Aplicada pela Universidade Federal de São Carlos (UFSCar, 2017).",
-        "Atua nas áreas de Economia Industrial, Inovação e Políticas Públicas, com experiência em estudos econômicos, análise setorial e formulação e monitoramento de políticas públicas. Atualmente, coordena o Núcleo de Economia Industrial do SENAI CIMATEC e é Bolsista Doutora do Instituto de Pesquisa Econômica Aplicada (IPEA)."
+        "Doutora (2022) e graduada (2014) em Economia pela Universidade Federal da Bahia (UFBA) e mestra em Economia Aplicada pela Universidade Federal de São Carlos (UFSCar, 2017).",
+        "Atua nas áreas de Economia Industrial, Inovação e Políticas Públicas, com experiência em estudos econômicos, análise setorial e formulação e monitoramento de políticas públicas. Ao longo de sua trajetória, desenvolveu atividades de pesquisa aplicada e assessoramento técnico em instituições como o Instituto de Pesquisa Econômica Aplicada (IPEA) e órgãos do Governo do Estado da Bahia, incluindo o SEI, a SEDUR e a SETRE.",
+        "Coordena o Núcleo de Economia Industrial do SENAI CIMATEC, com atuação em estudos sobre desenvolvimento industrial, competitividade, inovação e políticas públicas."
       ],
       lattes: "http://lattes.cnpq.br/9328556139281194",
       contato: "mabel.mota@fieb.org.br"
