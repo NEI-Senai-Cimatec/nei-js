@@ -1486,6 +1486,46 @@ footer .rodape-legal {
   margin-top: 12px
 }
 
+.modal-form-cta {
+  background: var(--nevoa);
+  border: 1px solid var(--linha);
+  border-radius: var(--radius-card);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-form-cta-texto {
+  margin: 0;
+  color: var(--grafite);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.modal-form-cta-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 24px;
+}
+
+.link-fluxo-demanda {
+  font-family: var(--display);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--azul-institucional);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 87, 168, 0.35);
+  padding-bottom: 2px;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.link-fluxo-demanda:hover {
+  color: var(--azul-profundo);
+  border-bottom-color: var(--azul-profundo);
+}
+
 .busca {
   position: relative;
   max-width: 520px;
@@ -1594,11 +1634,18 @@ footer .rodape-legal {
     padding: 40px 24px
   }
 
+  .modal.aberto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .modal-caixa {
     max-width: 880px;
     height: auto;
     max-height: 100%;
-    margin: 0 auto
+    margin: 0 auto;
+    border-radius: var(--radius-card);
   }
 
   .modal-corpo {

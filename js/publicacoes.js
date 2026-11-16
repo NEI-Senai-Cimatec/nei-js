@@ -136,6 +136,10 @@ async function carregarEstudosTecnicos() {
     carregarEstudosTecnicos()
   ]);
 
+  if (typeof window.protegerTermosContraTraducao === "function") {
+    window.protegerTermosContraTraducao(document.getElementById("produtos"));
+  }
+
   if (typeof window.vincularLinksProdutos === "function") {
     window.vincularLinksProdutos();
   }

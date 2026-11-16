@@ -275,7 +275,7 @@
           </button>
         </div>
 
-        <p class="vazio" id="vazio">Nenhum estudo corresponde à busca. Tente outro termo, ou registre uma demanda pelo
+        <p class="vazio" id="vazio">Nenhum estudo corresponde à busca. Tente outro termo, ou solicite um estudo pelo
           formulário.</p>
       </div>
     </div>
@@ -401,9 +401,9 @@
       <h2>Tem uma decisão pela frente?</h2>
       <div class="caixa">
         <div>
-          <p class="intro" style="margin-bottom:18px">Registre a demanda pelo formulário. O Núcleo retorna em até
+          <p class="intro" style="margin-bottom:18px">Solicite um estudo pelo formulário. O Núcleo retorna em até
             5 dias úteis com escopo, prazo e formato de entrega.</p>
-          <button class="btn abre-form" type="button">Registrar uma demanda</button>
+          <button class="btn abre-form" type="button">Solicitar estudo</button>
         </div>
       </div>
     </div>
@@ -498,13 +498,29 @@
             <span class="prazo">Prazo: definido conforme o estudo</span>
           </div>
         </div>
-        <div class="moldura" id="moldura"></div>
-        <p class="alternativa">Se o formulário não carregar, <a
-            href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u"
-            target="_blank" rel="noopener">abra em uma nova aba</a>.</p>
-        <p class="alternativa"><a
-            href="https://nei-senai-cimatec.github.io/nei-js/img/others/fluxo-de-demanda-do-nei-2026.png"
-            target="_blank" rel="noopener">Visualize o fluxo de demanda completo</a></p>
+        <div class="modal-form-cta">
+          <p class="modal-form-cta-texto">
+            Preencha o formulário para solicitar um estudo ao NEI. O formulário será aberto em uma nova aba do navegador.
+          </p>
+          <div class="modal-form-cta-acoes">
+            <a id="link-form-estudo" class="btn"
+              href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u"
+              target="_blank" rel="noopener noreferrer">
+              Solicitar estudo
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <a class="link-fluxo-demanda"
+              href="https://nei-senai-cimatec.github.io/nei-js/img/others/fluxo-de-demanda-do-nei-2026.png"
+              target="_blank" rel="noopener noreferrer">
+              Visualize o fluxo de demanda completo &rarr;
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -530,14 +546,14 @@
         </p>
 
         <div class="moldura moldura-contato">
-          <iframe
+          <iframe id="iframe-contato-estudo"
             src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u&amp;embed=true"
             title="Formulário de solicitação de acesso aos estudos do NEI" allowfullscreen></iframe>
         </div>
 
         <p class="alternativa">
           Se o formulário não carregar,
-          <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u"
+          <a id="link-form-contato-estudo" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u"
             target="_blank" rel="noopener noreferrer">
             abra em uma nova aba
           </a>.

@@ -125,6 +125,10 @@
       modalLinks.appendChild(contatoLink);
     }
 
+    if (typeof window.protegerTermosContraTraducao === "function") {
+      window.protegerTermosContraTraducao(modal);
+    }
+
     modal.classList.add("aberto");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("travado");

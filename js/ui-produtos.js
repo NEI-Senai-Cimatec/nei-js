@@ -99,20 +99,64 @@
   initNavProdutos();
 
   var modal = document.getElementById('modal-form');
-  var moldura = document.getElementById('moldura');
   var modalContatoEstudo = document.getElementById('modal-contato-estudo');
-
   var btnFecharContatoEstudo = document.getElementById('btn-fechar-contato-estudo');
-  var url = 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u&embed=true';
+
+  // Links do formulário de "Solicitar estudo" por idioma (pt, en, es).
+  // Substitua as URLs de "en" e "es" quando os formulários traduzidos forem criados.
+  var URLS_FORMULARIO_ESTUDO = {
+    pt: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u',
+    en: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u',
+    es: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUQllIWk1PUDIxOTlUV1c2TlYxNTU1T09VOS4u'
+  };
+
+  // Links do formulário de "Entre em contato" (solicitação de acesso a estudos restritos) por idioma.
+  var URLS_FORMULARIO_CONTATO_ESTUDO = {
+    pt: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u',
+    en: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u',
+    es: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Qphi0sNU7EG6tSre6-k5w7Ukfmdhn4NHmqBk_imgSEhUOUsxM0dRR01SSkgwRVNSSEpQMkNISFhDSy4u'
+  };
+
+  function obterIdiomaSite() {
+    if (typeof window.obterIdiomaAtual === 'function') {
+      return window.obterIdiomaAtual();
+    }
+    var salvo = localStorage.getItem('idioma-nei');
+    if (salvo === 'en' || salvo === 'es' || salvo === 'pt') {
+      return salvo;
+    }
+    return 'pt';
+  }
+
+  function atualizarLinksFormulariosPorIdioma() {
+    var idioma = obterIdiomaSite();
+
+    var urlEstudo = URLS_FORMULARIO_ESTUDO[idioma] || URLS_FORMULARIO_ESTUDO.pt;
+    var linkFormEstudo = document.getElementById('link-form-estudo');
+    if (linkFormEstudo) {
+      linkFormEstudo.href = urlEstudo;
+    }
+
+    var urlContato = URLS_FORMULARIO_CONTATO_ESTUDO[idioma] || URLS_FORMULARIO_CONTATO_ESTUDO.pt;
+    var linkFormContato = document.getElementById('link-form-contato-estudo');
+    if (linkFormContato) {
+      linkFormContato.href = urlContato;
+    }
+
+    var iframeContato = document.getElementById('iframe-contato-estudo');
+    if (iframeContato) {
+      var urlEmbedContato = urlContato.indexOf('embed=true') > -1 ? urlContato : urlContato + '&embed=true';
+      if (iframeContato.getAttribute('src') !== urlEmbedContato) {
+        iframeContato.setAttribute('src', urlEmbedContato);
+      }
+    }
+  }
+
+  atualizarLinksFormulariosPorIdioma();
+  window.atualizarLinksFormulariosPorIdioma = atualizarLinksFormulariosPorIdioma;
 
   function abrir() {
-    if (!moldura.querySelector('iframe')) {
-      var f = document.createElement('iframe');
-      f.setAttribute('src', url);
-      f.setAttribute('title', 'Formulário de demandas do NEI');
-      f.setAttribute('allowfullscreen', '');
-      moldura.appendChild(f);
-    }
+    atualizarLinksFormulariosPorIdioma();
     modal.classList.add('aberto');
     document.body.classList.add('travado');
   }
@@ -125,6 +169,8 @@
     if (!modalContatoEstudo) {
       return;
     }
+
+    atualizarLinksFormulariosPorIdioma();
 
     modalContatoEstudo.classList.add('aberto');
 
