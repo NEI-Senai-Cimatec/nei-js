@@ -1634,18 +1634,11 @@ footer .rodape-legal {
     padding: 40px 24px
   }
 
-  .modal.aberto {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .modal-caixa {
     max-width: 880px;
     height: auto;
     max-height: 100%;
-    margin: 0 auto;
-    border-radius: var(--radius-card);
+    margin: 0 auto
   }
 
   .modal-corpo {

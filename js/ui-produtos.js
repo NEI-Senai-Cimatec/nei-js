@@ -99,6 +99,7 @@
   initNavProdutos();
 
   var modal = document.getElementById('modal-form');
+  var moldura = document.getElementById('moldura');
   var modalContatoEstudo = document.getElementById('modal-contato-estudo');
   var btnFecharContatoEstudo = document.getElementById('btn-fechar-contato-estudo');
 
@@ -128,10 +129,15 @@
     return 'pt';
   }
 
+  function obterUrlEstudoAtual() {
+    var idioma = obterIdiomaSite();
+    return URLS_FORMULARIO_ESTUDO[idioma] || URLS_FORMULARIO_ESTUDO.pt;
+  }
+
   function atualizarLinksFormulariosPorIdioma() {
     var idioma = obterIdiomaSite();
 
-    var urlEstudo = URLS_FORMULARIO_ESTUDO[idioma] || URLS_FORMULARIO_ESTUDO.pt;
+    var urlEstudo = obterUrlEstudoAtual();
     var linkFormEstudo = document.getElementById('link-form-estudo');
     if (linkFormEstudo) {
       linkFormEstudo.href = urlEstudo;
@@ -157,6 +163,22 @@
 
   function abrir() {
     atualizarLinksFormulariosPorIdioma();
+    var urlBase = obterUrlEstudoAtual();
+    var urlEmbed = urlBase.indexOf('embed=true') > -1 ? urlBase : urlBase + '&embed=true';
+
+    if (moldura) {
+      var iframeExistente = moldura.querySelector('iframe');
+      if (!iframeExistente) {
+        var f = document.createElement('iframe');
+        f.setAttribute('src', urlEmbed);
+        f.setAttribute('title', 'Formulário de demandas do NEI');
+        f.setAttribute('allowfullscreen', '');
+        moldura.appendChild(f);
+      } else if (iframeExistente.getAttribute('src') !== urlEmbed) {
+        iframeExistente.setAttribute('src', urlEmbed);
+      }
+    }
+
     modal.classList.add('aberto');
     document.body.classList.add('travado');
   }

@@ -112,20 +112,20 @@
     });
   }
 
-  function definirCookieTraducao(idioma) {
-    const valor = "/pt/" + idioma;
-
-    document.cookie =
-      "googtrans=" +
-      valor +
-      "; path=/; SameSite=Lax";
-  }
-
   function removerCookieTraducao() {
     document.cookie =
       "googtrans=; path=/;" +
       " expires=Thu, 01 Jan 1970 00:00:00 GMT;" +
       " SameSite=Lax";
+  }
+
+  function atualizarAtributoLang(idioma) {
+    document.documentElement.lang =
+      idioma === "en"
+        ? "en-US"
+        : idioma === "es"
+          ? "es"
+          : "pt-BR";
   }
 
   function alterarIdioma(idioma) {
@@ -137,46 +137,27 @@
       idiomaEscolhido
     );
 
+    removerCookieTraducao();
+
     atualizarBotoesIdioma(
       idiomaEscolhido
     );
 
-    if (idiomaEscolhido === "pt") {
-      removerCookieTraducao();
-      window.location.reload();
-      return;
-    }
-
-    definirCookieTraducao(
+    atualizarAtributoLang(
       idiomaEscolhido
     );
 
-    const seletorGoogle =
-      document.querySelector(".goog-te-combo");
-
-    if (seletorGoogle) {
-
-      seletorGoogle.value =
-        idiomaEscolhido;
-
-      seletorGoogle.dispatchEvent(
-        new Event("change", {
-          bubbles: true
-        })
-      );
-
-      setTimeout(function () {
-        window.location.reload();
-      }, 1500);
-
-      return;
+    if (typeof window.atualizarLinksFormulariosPorIdioma === "function") {
+      window.atualizarLinksFormulariosPorIdioma();
     }
 
-    /*
-    * Caso o Google ainda não tenha carregado,
-    * recarrega a página usando o cookie salvo.
-    */
-    window.location.reload();
+    if (typeof window.reaplicarEstadoAutenticacao === "function") {
+      window.reaplicarEstadoAutenticacao();
+    }
+
+    if (typeof window.aplicarTraducaoAutomatica === "function") {
+      window.aplicarTraducaoAutomatica(idiomaEscolhido);
+    }
   }
 
   botoesIdioma.forEach(function (botao) {
@@ -193,14 +174,13 @@
   const idiomaSalvo =
     obterIdiomaAtual();
 
+  removerCookieTraducao();
+
   atualizarBotoesIdioma(
     idiomaSalvo
   );
 
-  document.documentElement.lang =
-    idiomaSalvo === "en"
-      ? "en-US"
-      : idiomaSalvo === "es"
-        ? "es"
-        : "pt-BR";
+  atualizarAtributoLang(
+    idiomaSalvo
+  );
 })();

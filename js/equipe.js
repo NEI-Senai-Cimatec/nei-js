@@ -125,8 +125,8 @@
       modalLinks.appendChild(contatoLink);
     }
 
-    if (typeof window.protegerTermosContraTraducao === "function") {
-      window.protegerTermosContraTraducao(modal);
+    if (typeof window.traduzirElemento === "function") {
+      window.traduzirElemento(modal);
     }
 
     modal.classList.add("aberto");
