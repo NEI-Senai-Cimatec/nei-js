@@ -7,6 +7,18 @@
   <title>NEI | Núcleo de Economia Industrial | SENAI CIMATEC</title>
   <meta name="description"
     content="Unidade de inteligência competitiva do SENAI CIMATEC para análise da indústria, mercados, tecnologias e políticas públicas.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NEI | SENAI CIMATEC">
+  <meta property="og:title" content="NEI | Núcleo de Economia Industrial | SENAI CIMATEC">
+  <meta property="og:description"
+    content="Unidade de inteligência competitiva do SENAI CIMATEC para análise da indústria, mercados, tecnologias e políticas públicas.">
+  <meta property="og:url" content="https://nei-senai-cimatec.github.io/nei-js/">
+  <meta property="og:image" content="https://nei-senai-cimatec.github.io/nei-js/img/logos/nei.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NEI | Núcleo de Economia Industrial | SENAI CIMATEC">
+  <meta name="twitter:description"
+    content="Unidade de inteligência competitiva do SENAI CIMATEC para análise da indústria, mercados, tecnologias e políticas públicas.">
+  <meta name="twitter:image" content="https://nei-senai-cimatec.github.io/nei-js/img/logos/nei.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -14,7 +26,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css?v=2026.4">
+  <link rel="stylesheet" href="css/estilo.css?v=2026.8">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -153,9 +165,12 @@
           <h3>Qual o mercado e ambiente?</h3>
           <p>Análise da cadeia de negócios, benchmarking nacional e internacional, mapeamento de instrumentos de
             financiamento, análise de incentivos fiscais, mercado potencial e oportunidades setoriais.</p>
-          <span class="saida"><span class="tag-produto">Produtos</span> Estudos setoriais, Benchmarking, Dashboards
-            (painéis) e
-            White paper</span>
+          <span class="saida"><span class="tag-produto">Produtos</span>
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Estudos setoriais">Estudos setoriais</button>,
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Benchmarking">Benchmarking</button>,
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Painel">Dashboards (painéis)</button> e
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="White Paper">White paper</button>
+          </span>
         </div>
         <div class="pergunta">
           <div class="icone-box">
@@ -169,7 +184,10 @@
           <h3>Qual a dinâmica tecnológica?</h3>
           <p>Maturidade da tecnologia, padrão e dinâmica tecnológica, difusão e adoção de tecnologias nos setores
             industriais e fluxo de comércio de propriedade intelectual.</p>
-          <span class="saida"><span class="tag-produto">Produtos</span> Estudos setoriais</span>
+          <span class="saida"><span class="tag-produto">Produtos</span>
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Estudos setoriais">Estudos setoriais</button> e
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Prospecção tecnológica">Prospecção tecnológica</button>
+          </span>
         </div>
         <div class="pergunta">
           <div class="icone-box">
@@ -183,7 +201,11 @@
           </div>
           <h3>Quais instrumentos de política industrial?</h3>
           <p>Quais instrumentos e fontes de financiamento podem ampliar a competitividade da indústria.</p>
-          <span class="saida"><span class="tag-produto">Produtos</span> Estudos setoriais e Notas técnicas</span>
+          <span class="saida"><span class="tag-produto">Produtos</span>
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Estudos setoriais">Estudos setoriais</button>,
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Planos estratégicos">Planos estratégicos</button> e
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Nota técnica">Notas técnicas</button>
+          </span>
         </div>
         <div class="pergunta">
           <div class="icone-box">
@@ -198,7 +220,10 @@
           <p>Quais efeitos de mudanças na tributação na economia, como se dará o seu uso, como acessar benefícios, quais
             implicações na economia e que mudanças regulatórias afetam ambientes industriais, de CT&amp;I e de educação.
           </p>
-          <span class="saida"><span class="tag-produto">Produtos</span>Estudos setoriais e Notas técnicas</span>
+          <span class="saida"><span class="tag-produto">Produtos</span>
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Estudos setoriais">Estudos setoriais</button> e
+            <button type="button" class="filtro-desafio-link" data-filtro-tipo="Nota técnica">Notas técnicas</button>
+          </span>
         </div>
       </div>
     </div>
@@ -209,18 +234,38 @@
       <p class="rotulo">Nossos produtos</p>
       <h2>Produtos em destaque</h2>
       <div id="conteudoProdutos">
-        <div class="busca">
-          <label for="busca" class="visually-hidden"
-            style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Buscar estudo</label>
-          <input id="busca" type="search" autocomplete="off" placeholder="Buscar por estudo, tema ou tipo de produto">
-          <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
-          </svg>
-          <p class="contagem" id="contagem"></p>
+        <div class="busca-e-filtros">
+          <div class="busca">
+            <label for="busca" class="visually-hidden"
+              style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Buscar estudo</label>
+            <input id="busca" type="search" autocomplete="off" placeholder="Buscar por estudo, tema ou tipo de produto">
+            <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+            <p class="contagem" id="contagem"></p>
+          </div>
+
+          <div class="filtros-tipo" id="filtros-tipo" role="group" aria-label="Filtrar por tipo de produto">
+            <button type="button" class="chip-filtro ativo" data-chip-tipo="">Todos</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Benchmarking">Benchmarking</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Painel">Painéis</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Boletim técnico">Boletins técnicos</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Macrotrend">Macrotrends</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Estudos setoriais">Estudos setoriais</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Nota técnica">Notas técnicas</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Prospecção tecnológica">Prospecção tecnológica</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="Planos estratégicos">Planos estratégicos</button>
+            <button type="button" class="chip-filtro" data-chip-tipo="White Paper">White Papers</button>
+          </div>
         </div>
 
-        <p class="grupo" data-grupo="tecnicos">Estudos técnicos</p>
+        <div class="grupo-cabecalho" data-cabecalho-grupo="tecnicos">
+          <p class="grupo" data-grupo="tecnicos">Estudos técnicos</p>
+          <button type="button" class="btn-ver-todos" data-alvo-grade="tecnicos-dinamicos" aria-expanded="false">
+            Ver todos
+          </button>
+        </div>
         <div class="produtos-wrapper">
           <button type="button" class="btn-nav btn-prev" aria-label="Estudos anteriores" title="Anterior">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -238,7 +283,12 @@
           </button>
         </div>
 
-        <p class="grupo" data-grupo="cientificos">Estudos científicos</p>
+        <div class="grupo-cabecalho" data-cabecalho-grupo="cientificos">
+          <p class="grupo" data-grupo="cientificos">Estudos científicos</p>
+          <button type="button" class="btn-ver-todos" data-alvo-grade="cientificos-dinamicos" aria-expanded="false">
+            Ver todos
+          </button>
+        </div>
         <div class="produtos-wrapper">
           <button type="button" class="btn-nav btn-prev" aria-label="Estudos anteriores" title="Anterior">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -257,7 +307,12 @@
           </button>
         </div>
 
-        <p class="grupo" data-grupo="white_papers">White Papers</p>
+        <div class="grupo-cabecalho" data-cabecalho-grupo="white_papers">
+          <p class="grupo" data-grupo="white_papers">White Papers</p>
+          <button type="button" class="btn-ver-todos" data-alvo-grade="white-papers-dinamicos" aria-expanded="false">
+            Ver todos
+          </button>
+        </div>
         <div class="produtos-wrapper">
           <button type="button" class="btn-nav btn-prev" aria-label="Estudos anteriores" title="Anterior">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -515,10 +570,10 @@
     <div class="modal-caixa">
       <div class="modal-topo">
         <h2 id="modal-contato-titulo">
-          Entre em contato
+          Solicitar acesso
         </h2>
 
-        <button class="fechar" type="button" id="btn-fechar-contato-estudo" aria-label="Fechar formulário de contato">
+        <button class="fechar" type="button" id="btn-fechar-contato-estudo" aria-label="Fechar formulário de solicitação de acesso">
           FECHAR
         </button>
       </div>
@@ -570,8 +625,41 @@
     </div>
   </div>
 
-  <script src="js/ui-produtos.js?v=2026.5"></script>
-  <script src="js/equipe.js?v=2026.5"></script>
+  <!-- Modal de Detalhes de Estudo / Publicação -->
+  <div class="modal-equipe-overlay modal-detalhe-estudo-overlay" id="modal-detalhe-estudo" role="dialog"
+    aria-modal="true" aria-labelledby="modal-estudo-titulo" aria-hidden="true">
+    <div class="modal-equipe-card modal-detalhe-estudo-card">
+      <button class="modal-equipe-fechar" type="button" id="btn-fechar-detalhe-estudo"
+        aria-label="Fechar detalhes do estudo">&times;</button>
+      <div class="modal-equipe-conteudo modal-detalhe-estudo-conteudo">
+        <div class="modal-equipe-esquerda modal-detalhe-estudo-esquerda">
+          <div class="modal-estudo-capa-wrap">
+            <img id="modal-estudo-capa" src="" alt="">
+          </div>
+          <div class="modal-estudo-badges" id="modal-estudo-badges"></div>
+          <div class="modal-equipe-links modal-estudo-acoes" id="modal-estudo-acoes"></div>
+        </div>
+        <div class="modal-equipe-direita modal-detalhe-estudo-direita">
+          <span class="modal-estudo-categoria" id="modal-estudo-categoria"></span>
+          <h3 id="modal-estudo-titulo" class="modal-estudo-titulo"></h3>
+          <div id="modal-estudo-meta" class="modal-estudo-meta"></div>
+          <h4 class="modal-equipe-bio-titulo">Sobre o estudo</h4>
+          <div id="modal-estudo-resumo" class="modal-equipe-bio-texto"></div>
+          <div id="modal-estudo-ficha" class="modal-estudo-ficha"></div>
+          <div id="modal-estudo-citacao-wrap" class="modal-estudo-citacao-wrap" hidden>
+            <div class="modal-estudo-citacao-topo">
+              <span class="modal-estudo-citacao-rotulo">Como citar</span>
+              <button type="button" class="btn-copiar-citacao" id="btn-copiar-citacao">Copiar citação</button>
+            </div>
+            <p class="modal-estudo-citacao-texto" id="modal-estudo-citacao-texto"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ui-produtos.js?v=2026.8"></script>
+  <script src="js/equipe.js?v=2026.8"></script>
 
   <!-- Modal de login -->
   <div id="modalLogin" class="login-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloLogin"
@@ -740,15 +828,15 @@
       </form>
     </div>
   </div>
-  <script src="js/idioma.js?v=2026.5"></script>
+  <script src="js/idioma.js?v=2026.8"></script>
   <!-- URL e annon public key do supabase -->
-  <script src="js/auth.js?v=2026.5"></script>
+  <script src="js/auth.js?v=2026.8"></script>
 
-  <script src="js/traducao.js?v=2026.5"></script>
+  <script src="js/traducao.js?v=2026.8"></script>
 
   <script src="js/trama.js?v=2026.1"></script>
 
-  <script src="js/publicacoes.js?v=2026.5"></script>
+  <script src="js/publicacoes.js?v=2026.8"></script>
 </body>
 
 </html>
