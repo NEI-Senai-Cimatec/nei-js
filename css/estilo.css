@@ -603,6 +603,15 @@ h2 {
   margin: 0 0 18px;
 }
 
+.pasta-restrita-cabecalho {
+  align-items: center;
+  margin: 0 0 28px;
+}
+
+.pasta-restrita-cabecalho h2 {
+  margin: 0;
+}
+
 .grupo {
   font-family: var(--titulos);
   font-weight: 700;

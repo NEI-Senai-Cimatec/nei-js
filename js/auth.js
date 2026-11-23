@@ -455,6 +455,7 @@ async function carregarArquivosPastaRestrita() {
   const lista =
     document.createElement("div");
 
+  lista.id = "lista-pasta-restrita";
   lista.className = "produtos";
   lista.setAttribute(
     "data-grade",
@@ -601,6 +602,12 @@ async function carregarArquivosPastaRestrita() {
   );
 
   function atualizarBotoesPasta() {
+    if (lista.classList.contains("em-grade")) {
+      btnAnterior.disabled = true;
+      btnProximo.disabled = true;
+      return;
+    }
+
     const maxScroll =
       lista.scrollWidth -
       lista.clientWidth;

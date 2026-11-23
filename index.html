@@ -26,7 +26,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css?v=2026.8">
+  <link rel="stylesheet" href="css/estilo.css?v=2026.9">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -340,7 +340,13 @@
     <div class="wrap">
       <p class="rotulo">Área restrita - Superintendência de planejamento e novos negócios</p>
 
-      <h2>Documentos compartilhados</h2>
+      <div class="grupo-cabecalho pasta-restrita-cabecalho">
+        <h2>Documentos compartilhados</h2>
+        <button type="button" id="btn-ver-todos-pasta-restrita" class="btn-ver-todos"
+          data-alvo-grade="lista-pasta-restrita" aria-expanded="false">
+          Ver todos
+        </button>
+      </div>
 
       <div id="arquivos-pasta-restrita"></div>
     </div>
@@ -658,8 +664,8 @@
     </div>
   </div>
 
-  <script src="js/ui-produtos.js?v=2026.8"></script>
-  <script src="js/equipe.js?v=2026.8"></script>
+  <script src="js/ui-produtos.js?v=2026.9"></script>
+  <script src="js/equipe.js?v=2026.9"></script>
 
   <!-- Modal de login -->
   <div id="modalLogin" class="login-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloLogin"
@@ -828,15 +834,15 @@
       </form>
     </div>
   </div>
-  <script src="js/idioma.js?v=2026.8"></script>
+  <script src="js/idioma.js?v=2026.9"></script>
   <!-- URL e annon public key do supabase -->
-  <script src="js/auth.js?v=2026.8"></script>
+  <script src="js/auth.js?v=2026.9"></script>
 
-  <script src="js/traducao.js?v=2026.8"></script>
+  <script src="js/traducao.js?v=2026.9"></script>
 
   <script src="js/trama.js?v=2026.1"></script>
 
-  <script src="js/publicacoes.js?v=2026.8"></script>
+  <script src="js/publicacoes.js?v=2026.9"></script>
 </body>
 
 </html>

@@ -163,6 +163,7 @@
       if (window.atualizarNavProdutos) {
         window.atualizarNavProdutos();
       }
+      window.dispatchEvent(new Event('resize'));
     });
   });
 
